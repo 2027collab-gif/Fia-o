@@ -1,235 +1,460 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FIA'O - Your credit notebook, now digital.</title>
-  
-  <!-- Fuentes e Iconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Archivo CSS externo -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FIA'O - Inventory</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Products.css">
 </head>
+
 <body>
 
-  <!-- Barra de Navegación -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="#" id="nav-logo">
-          <img src="Imagenes/Logo Fiao.png" alt="FIA'O Logo" class="brand-logo-img">
+    <!-- =========================
+         TOP NAVIGATION
+    ========================== -->
+
+    <header class="topbar">
+
+        <a href="#" class="brand">
+            <img src="assets/fiao-logo.svg" alt="FIA'O Logo">
         </a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#" id="nav-home">Home</a></li>
-        <li><a href="credit.html">Credit</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Clients</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- SECCIÓN 1: HOME / INICIO -->
-  <main id="home-view" class="view active">
-    <div class="hero-text">
-      <h1>Your credit notebook, <span>now digital.</span></h1>
-      <p>FIA'O digitizes customer, debt, and payment management for convenience stores and small businesses in Panama, replacing the traditional paper ledger with a modern digital management system.</p>
-      <div class="btn-group">
-        <button id="btn-home-login" class="btn-yellow">Login</button>
-        <button id="btn-home-signup" class="btn-yellow">Sign up</button>
-      </div>
+        <nav class="main-nav">
+
+            <a href="#" data-i18n="navHome">
+                Home
+            </a>
+
+            <a href="#" data-i18n="navCredit">
+                Credit
+            </a>
+
+            <a href="#" data-i18n="navProducts">
+                Products
+            </a>
+
+            <a href="#" data-i18n="navClients">
+                Clients
+            </a>
+
+            <a href="#" data-i18n="navReports">
+                Reports
+            </a>
+
+            <a href="#" data-i18n="navContact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH / OPTIONS BAR
+    ========================== -->
+
+    <section class="utility-bar">
+
+        <div class="utility-brand">
+
+            <img
+                src="assets/fiao-logo.svg"
+                alt="FIA'O">
+
+        </div>
+
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Search products, pantry, drinks..."
+                data-i18n-placeholder="searchPlaceholder">
+
+        </div>
+
+
+        <div class="utility-actions">
+
+            <!-- LANGUAGE -->
+
+            <button
+                class="language-btn"
+                id="languageBtn"
+                type="button">
+
+                <span>
+                    ◉
+                </span>
+
+                <strong id="languageLabel">
+                    ES
+                </strong>
+
+            </button>
+
+
+            <!-- DARK MODE -->
+
+            <button
+                class="theme-btn"
+                id="themeBtn"
+                type="button">
+
+                <span id="themeIcon">
+                    ☾
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="page">
+
+
+        <!-- TABS -->
+
+        <div class="section-tabs">
+
+            <button
+                class="tab active"
+                id="inventoryTab"
+                data-i18n="inventory">
+
+                Inventory
+
+            </button>
+
+
+            <button
+                class="tab"
+                id="saleTab"
+                data-i18n="registerSale">
+
+                Register Fiado Sale
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INVENTORY
+        ========================== -->
+
+        <section id="inventoryView">
+
+            <div class="intro">
+
+                <h1 data-i18n="inventoryTitle">
+                    Your inventory, always exact
+                </h1>
+
+                <p data-i18n="inventorySubtitle">
+                    Showing core products and add option.
+                    Use search bar to look up items.
+                </p>
+
+            </div>
+
+
+            <!-- PRODUCTS WILL APPEAR HERE -->
+
+            <div
+                class="product-grid"
+                id="productGrid">
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REGISTER FIADO SALE
+        ========================== -->
+
+        <section
+            id="saleView"
+            class="sale-view hidden">
+
+            <div class="sale-card">
+
+                <h2 data-i18n="saleTitle">
+                    Register Fiado Sale
+                </h2>
+
+                <p data-i18n="saleText">
+                    Select a client and add the products sold on credit.
+                </p>
+
+
+                <div class="sale-form">
+
+                    <label>
+
+                        <span data-i18n="client">
+                            Client
+                        </span>
+
+                        <input
+                            id="clientName"
+                            type="text"
+                            placeholder="Client name">
+
+                    </label>
+
+
+                    <label>
+
+                        <span data-i18n="saleProduct">
+                            Product
+                        </span>
+
+                        <select id="saleProduct"></select>
+
+                    </label>
+
+
+                    <label>
+
+                        <span data-i18n="quantity">
+                            Quantity
+                        </span>
+
+                        <input
+                            id="saleQuantity"
+                            type="number"
+                            min="1"
+                            value="1">
+
+                    </label>
+
+
+                    <button
+                        id="registerSaleBtn"
+                        class="primary-btn"
+                        type="button"
+                        data-i18n="register">
+
+                        Register
+
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="saleMessage"
+                    class="sale-message">
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         ADD / EDIT PRODUCT MODAL
+    ========================== -->
+
+    <div
+        class="modal-backdrop hidden"
+        id="productModal">
+
+        <div class="modal">
+
+            <button
+                class="close-btn"
+                id="closeModal"
+                type="button">
+
+                ×
+
+            </button>
+
+
+            <h2
+                id="modalTitle"
+                data-i18n="addProduct">
+
+                Add New Product
+
+            </h2>
+
+
+            <form id="productForm">
+
+                <input
+                    type="hidden"
+                    id="editingId">
+
+
+                <label>
+
+                    <span data-i18n="productName">
+                        Product name
+                    </span>
+
+                    <input
+                        id="productName"
+                        required
+                        type="text"
+                        placeholder="Example: Flour">
+
+                </label>
+
+
+                <label>
+
+                    <span data-i18n="category">
+                        Category
+                    </span>
+
+                    <select id="productCategory">
+
+                        <option>
+                            Pantry
+                        </option>
+
+                        <option>
+                            Bakery
+                        </option>
+
+                        <option>
+                            Beverages
+                        </option>
+
+                        <option>
+                            Dairy
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </label>
+
+
+                <label>
+
+                    <span data-i18n="price">
+                        Price (B/.)
+                    </span>
+
+                    <input
+                        id="productPrice"
+                        required
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="1.50">
+
+                </label>
+
+
+                <label>
+
+                    <span data-i18n="stock">
+                        Stock
+                    </span>
+
+                    <input
+                        id="productStock"
+                        required
+                        type="number"
+                        min="0"
+                        step="1"
+                        placeholder="10">
+
+                </label>
+
+
+                <label>
+
+                    <span data-i18n="unit">
+                        Unit
+                    </span>
+
+                    <input
+                        id="productUnit"
+                        required
+                        type="text"
+                        value="Unit"
+                        placeholder="Unit / Bottle / Pack / lb">
+
+                </label>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="cancel-btn"
+                        id="cancelModal"
+                        type="button"
+                        data-i18n="cancel">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        class="primary-btn"
+                        type="submit"
+                        data-i18n="save">
+
+                        Save product
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
     </div>
 
-    <!-- Imagen del teléfono -->
-    <div class="phone-container">
-      <img src="Imagenes/Telefonoo.png" alt="FIA'O App Screen" class="phone-mockup-img">
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast">
     </div>
-  </main>
 
-  <!-- SECCIÓN 2: LOGIN / INICIO DE SESIÓN -->
-  <main id="login-view" class="view light-page">
-    <div class="page-content">
-      <div class="info-side">
-        <div class="brand">
-          <img src="Imagenes/Logo Fiao.png" alt="FIA'O Logo" class="brand-logo-img">
-        </div>
-        <h1>We are innovation with</h1>
-        <h1 class="highlight">purpose</h1>
-        <p class="subtitle">Technology at the service of small businesses</p>
 
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-chart-column"></i></div>
-            <div class="feature-text">
-              <h4>Total Control</h4>
-              <p>Manage your inventory, sales, and debts all from one place</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <div class="feature-text">
-              <h4>More Security</h4>
-              <p>Digitize the credit and keep track of your customers safely</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
-            <div class="feature-text">
-              <h4>Better Relationships</h4>
-              <p>Transparency and trust between you and your clients</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- JAVASCRIPT -->
 
-      <div class="form-side">
-        <h2>Log In</h2>
-        <p class="form-sub">Enter your credentials</p>
+    <script src="Products.js"></script>
 
-        <form action="#" method="POST">
-          <div class="form-group">
-            <label for="login-email">Email</label>
-            <div class="input-wrapper">
-              <i class="fa-regular fa-envelope"></i>
-              <input type="email" id="login-email" name="email" placeholder="example@domain.com" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="login-password">Password</label>
-            <div class="input-wrapper">
-              <i class="fa-solid fa-lock"></i>
-              <input type="password" id="login-password" name="password" placeholder="********" required>
-            </div>
-            <a href="#" class="forgot-pass">You forgot your password?</a>
-          </div>
-
-          <button type="submit" class="btn-submit-red">Log In</button>
-
-          <div class="recaptcha-box">
-            <label>
-              <input type="checkbox" name="recaptcha"> I'm not a robot
-            </label>
-            <div class="recaptcha-logo">
-              <i class="fa-solid fa-shield-halved"></i>
-              reCAPTCHA
-            </div>
-          </div>
-
-          <div class="form-footer">
-            Don't you have an account? <a href="#" id="link-to-signup">Sign Up</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </main>
-
-  <!-- SECCIÓN 3: SIGN UP / REGISTRO -->
-  <main id="signup-view" class="view light-page">
-    <div class="page-content">
-      <div class="info-side">
-        <div class="brand">
-          <img src="Imagenes/Logo Fiao.png" alt="FIA'O Logo" class="brand-logo-img">
-        </div>
-        <h1>Sign up for</h1>
-        <h1 class="highlight">free</h1>
-        <p class="subtitle">Create your account on FIA'O and start managing your credit sales easily, securely, and in an organized way.</p>
-
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-regular fa-user"></i></div>
-            <div class="feature-text">
-              <h4>Fast & Easy</h4>
-              <p>Create your account in just a few minutes and start using the platform.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <div class="feature-text">
-              <h4>Secure</h4>
-              <p>We protect your business and customer information.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-cloud"></i></div>
-            <div class="feature-text">
-              <h4>Cloud-Based</h4>
-              <p>Access your information anytime, anywhere, from any device.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon"><i class="fa-solid fa-chart-column"></i></div>
-            <div class="feature-text">
-              <h4>Greater Control</h4>
-              <p>Keep track of your debits and business growth seamlessly.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-side">
-        <h2>Create your account</h2>
-        <p class="form-sub">Complete the form to get started</p>
-
-        <form action="#" method="POST">
-          <div class="form-group">
-            <label for="signup-fullname">Full name *</label>
-            <div class="input-simple">
-              <input type="text" id="signup-fullname" name="fullname" placeholder="Add your name" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="signup-email">Email Address *</label>
-            <div class="input-simple">
-              <input type="email" id="signup-email" name="email" placeholder="Add your email" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="signup-phone">Phone Number *</label>
-            <div class="input-simple">
-              <input type="tel" id="signup-phone" name="phone" placeholder="Add your number" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="signup-business">Business Name *</label>
-            <div class="input-simple">
-              <input type="text" id="signup-business" name="business" placeholder="Ejem: Tienda Doña Carmen" required>
-            </div>
-          </div>
-
-          <div class="grid-2">
-            <div class="form-group">
-              <label for="signup-password">Password *</label>
-              <div class="input-simple">
-                <input type="password" id="signup-password" name="password" placeholder="Add your password" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="signup-confirm-password">Confirm Password *</label>
-              <div class="input-simple">
-                <input type="password" id="signup-confirm-password" name="confirm_password" placeholder="Confirm" required>
-              </div>
-            </div>
-          </div>
-
-          <button type="submit" class="btn-submit-yellow">Create My Account</button>
-
-          <div class="form-footer">
-            Already have an account? <a href="#" id="link-to-login">Sign In</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </main>
-
-  <!-- Archivo JavaScript externo -->
-  <script src="script.js"></script>
 </body>
 </html>
