@@ -1,5 +1,5 @@
 /* =========================
-   GENERAL
+   RESET & GENERAL
 ========================= */
 
 * {
@@ -13,11 +13,10 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
     background-color: #ffffff;
     color: #111111;
 }
-
 
 /* =========================
    NAVIGATION BAR
@@ -25,326 +24,419 @@ body {
 
 header {
     background-color: #ffffff;
-    padding: 40px 0;
+    padding: 25px 0;
 }
 
-nav {
-    width: 87%;
-    max-width: 1620px;
-    height: 87px;
+.navbar {
+    width: 90%;
+    max-width: 1400px;
+    height: 80px;
     margin: 0 auto;
-
     background-color: #c62828;
-
     border-radius: 15px;
-
     display: flex;
     align-items: center;
-    padding: 0 36px;
-
+    justify-content: space-between;
+    padding: 0 30px;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
-
-/* FIA'O LOGO */
-
-nav h1 {
-    color: #ffffff;
-    font-size: 44px;
-    font-weight: 700;
-    letter-spacing: -2px;
-    margin-right: auto;
+.logo .brand-logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
 
-nav h1::after {
-    content: "";
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
 }
 
-
-/* NAVIGATION BUTTONS */
-
-nav a {
+.nav-links li a {
     text-decoration: none;
-
     background-color: #ffcc33;
     color: #111111;
-
-    font-size: 18px;
-
-    padding: 12px 25px;
-
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 22px;
     border-radius: 30px;
-
-    margin-left: 70px;
-
-    transition: 0.25s ease;
+    transition: all 0.25s ease;
+    display: inline-block;
 }
 
-nav a:hover {
+.nav-links li a:hover,
+.nav-links li a.active-link {
     background-color: #ffd95a;
     transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-
 /* =========================
-   HOME / HERO
+   MAIN VISTAS (SPA / HOME)
 ========================= */
 
-main {
+.view {
     width: 100%;
 }
 
-section {
-    min-height: calc(100vh - 167px);
-
+/* HOME HERO SECTION */
+#home-view {
+    min-height: calc(100vh - 130px);
     background-color: #c5191e;
-
     display: flex;
     align-items: center;
-
-    padding: 55px 10% 70px;
-
+    justify-content: space-between;
+    padding: 50px 8%;
     overflow: hidden;
 }
 
-
-/* =========================
-   LEFT CONTENT
-========================= */
-
-section > div:first-child {
-    width: 58%;
-    padding-left: 20px;
+.hero-text {
+    width: 55%;
     z-index: 2;
 }
 
-
-/* MAIN TITLE */
-
-h2 {
+.hero-text h1 {
     color: #ffffff;
-
-    font-size: clamp(65px, 6vw, 112px);
-
-    line-height: 0.95;
-
+    font-size: clamp(45px, 5vw, 85px);
+    line-height: 1.05;
     font-weight: 800;
-
-    letter-spacing: -4px;
-
-    max-width: 760px;
-
-    margin-bottom: 55px;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
 }
 
-
-/* MAKE "CREDIT" YELLOW */
-
-h2 {
-    position: relative;
+.hero-text h1 span {
+    color: #ffcc33;
 }
 
-
-/* DESCRIPTION */
-
-section p {
+.hero-text p {
     color: #ffffff;
-
-    font-size: 24px;
-
-    line-height: 1.45;
-
-    max-width: 760px;
-
-    margin-bottom: 55px;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 35px;
+    font-weight: 300;
 }
 
+/* BUTTONS HOME */
+.btn-group {
+    display: flex;
+    gap: 20px;
+}
 
-/* =========================
-   BUTTONS
-========================= */
-
-section a {
+.btn-yellow {
     display: inline-flex;
-
     justify-content: center;
     align-items: center;
-
-    width: 250px;
-    height: 55px;
-
+    width: 180px;
+    height: 50px;
     background-color: #ffcc33;
-
     color: #111111;
-
-    text-decoration: none;
-
-    font-size: 19px;
-
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
     border-radius: 30px;
-
-    margin-right: 120px;
-
+    cursor: pointer;
     transition: all 0.25s ease;
 }
 
-section a:hover {
+.btn-yellow:hover {
     background-color: #ffd95a;
-
     transform: translateY(-3px);
-
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-
-/* =========================
-   PHONE IMAGE
-========================= */
-
-section > div:last-child {
-    width: 42%;
-
+/* PHONE IMAGE */
+.phone-container {
+    width: 40%;
     display: flex;
-
     justify-content: center;
     align-items: center;
-
-    position: relative;
 }
 
-
-section img {
-    width: min(470px, 100%);
-
-    max-height: 650px;
-
+.phone-mockup-img {
+    width: min(420px, 100%);
+    max-height: 600px;
     object-fit: contain;
-
     display: block;
-
-    transform: translateY(25px);
+    transform: translateY(10px);
 }
-
 
 /* =========================
-   RESPONSIVE
+   LOGIN & SIGNUP PAGES
 ========================= */
 
-@media (max-width: 1200px) {
-
-    nav a {
-        margin-left: 25px;
-        padding: 11px 18px;
-        font-size: 16px;
-    }
-
-    section {
-        padding-left: 6%;
-        padding-right: 6%;
-    }
-
-    h2 {
-        font-size: 75px;
-    }
-
-    section p {
-        font-size: 20px;
-    }
-
-    section a {
-        margin-right: 40px;
-    }
+.light-page {
+    background-color: #f8f9fa;
+    padding: 50px 8%;
+    min-height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.page-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
 
-@media (max-width: 900px) {
+.info-side {
+    width: 50%;
+    background-color: #c5191e;
+    color: #ffffff;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-    header {
-        padding: 20px;
+.info-side .brand-logo-img {
+    height: 45px;
+    margin-bottom: 20px;
+}
+
+.info-side h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.info-side h1.highlight {
+    color: #ffcc33;
+    margin-bottom: 10px;
+}
+
+.info-side .subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.feature-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ffcc33;
+    flex-shrink: 0;
+}
+
+.feature-text h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.feature-text p {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.form-side {
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-side h2 {
+    font-size: 32px;
+    color: #111111;
+    font-weight: 700;
+}
+
+.form-sub {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.input-wrapper, .input-simple {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 0 15px;
+    background-color: #f9f9f9;
+}
+
+.input-wrapper i {
+    color: #888;
+    margin-right: 10px;
+}
+
+.input-wrapper input, .input-simple input {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+}
+
+.forgot-pass {
+    align-self: flex-end;
+    font-size: 12px;
+    color: #c5191e;
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.btn-submit-red, .btn-submit-yellow {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.25s;
+}
+
+.btn-submit-red {
+    background-color: #c5191e;
+    color: #ffffff;
+}
+
+.btn-submit-red:hover {
+    background-color: #a01217;
+}
+
+.btn-submit-yellow {
+    background-color: #ffcc33;
+    color: #111111;
+}
+
+.btn-submit-yellow:hover {
+    background-color: #ffd95a;
+}
+
+.recaptcha-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+    font-size: 13px;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.form-footer a {
+    color: #c5191e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 20px;
     }
 
-    nav {
-        width: 100%;
-        height: auto;
-
-        padding: 20px;
-
-        flex-wrap: wrap;
-
-        gap: 15px;
+    .nav-links li a {
+        padding: 8px 14px;
+        font-size: 14px;
     }
 
-    nav h1 {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    nav a {
-        margin-left: 0;
-    }
-
-    section {
+    #home-view {
         flex-direction: column;
-
         text-align: center;
-
-        padding-top: 60px;
+        padding-top: 40px;
     }
 
-    section > div:first-child {
+    .hero-text {
         width: 100%;
-        padding-left: 0;
     }
 
-    section > div:last-child {
-        width: 100%;
-        margin-top: 50px;
-    }
-
-    h2 {
-        font-size: 65px;
-        letter-spacing: -2px;
-    }
-
-    section p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    section a {
-        margin: 5px 10px;
-    }
-
-    section img {
-        max-width: 400px;
-    }
-}
-
-
-@media (max-width: 550px) {
-
-    nav {
+    .btn-group {
         justify-content: center;
     }
 
-    nav h1 {
-        text-align: center;
+    .phone-container {
+        width: 100%;
+        margin-top: 40px;
     }
 
-    nav a {
-        font-size: 14px;
-        padding: 9px 15px;
+    .page-content {
+        flex-direction: column;
     }
 
-    h2 {
-        font-size: 50px;
+    .info-side, .form-side {
+        width: 100%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 15px;
     }
 
-    section p {
-        font-size: 17px;
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
     }
 
-    section a {
-        width: 200px;
+    .grid-2 {
+        grid-template-columns: 1fr;
     }
 }
