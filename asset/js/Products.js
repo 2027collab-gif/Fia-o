@@ -1,1345 +1,331 @@
-/* =========================================
-   INITIAL PRODUCTS
-========================================= */
-
-const initialProducts = [
-
-    {
-        id: 1,
-        name: "Sugar",
-        category: "Pantry",
-        price: 0.85,
-        stock: 25,
-        unit: "lb",
-        image: "assets/sugar.svg"
-    },
-
-    {
-        id: 2,
-        name: "Rice",
-        category: "Pantry",
-        price: 0.95,
-        stock: 38,
-        unit: "lb",
-        image: "assets/rice.svg"
-    },
-
-    {
-        id: 3,
-        name: "White Bread",
-        category: "Bakery",
-        price: 1.50,
-        stock: 12,
-        unit: "Unit",
-        image: "assets/bread.svg"
-    },
-
-    {
-        id: 4,
-        name: "Coca Cola 2L",
-        category: "Beverages",
-        price: 2.10,
-        stock: 20,
-        unit: "Bottle",
-        image: "assets/coke.svg"
-    },
-
-    {
-        id: 5,
-        name: "Eggs (Dozen)",
-        category: "Dairy",
-        price: 3.20,
-        stock: 15,
-        unit: "Pack",
-        image: "assets/eggs.svg"
-    }
-
+// Initial Products Data with exact requested image filenames
+let products = [
+  {
+    id: 1,
+    name: "Sugar",
+    category: "Pantry",
+    unit: "Pound (lb)",
+    price: 0.85,
+    stock: 25,
+    unitAbbr: "lb",
+    image: "./asset/img/Azúcar.png"
+  },
+  {
+    id: 2,
+    name: "Rice",
+    category: "Pantry",
+    unit: "Pound (lb)",
+    price: 0.95,
+    stock: 38,
+    unitAbbr: "lb",
+    image: "./asset/img/Arroz.png"
+  },
+  {
+    id: 3,
+    name: "White Bread",
+    category: "Bakery",
+    unit: "Unit",
+    price: 1.50,
+    stock: 12,
+    unitAbbr: "Unit",
+    image: "./asset/img/Pan.png"
+  },
+  {
+    id: 4,
+    name: "Coca Cola 2L",
+    category: "Beverages",
+    unit: "Bottle",
+    price: 2.10,
+    stock: 20,
+    unitAbbr: "Bottle",
+    image: "./asset/img/Cocacola.png"
+  },
+  {
+    id: 5,
+    name: "Eggs (Dozen)",
+    category: "Dairy",
+    unit: "Pack",
+    price: 3.20,
+    stock: 15,
+    unitAbbr: "Pack",
+    image: "./asset/img/Huevos.png"
+  }
 ];
 
+let editingProductId = null;
 
-/* =========================================
-   TRANSLATIONS
-========================================= */
-
-const translations = {
-
-    en: {
-
-        navHome: "Home",
-        navCredit: "Credit",
-        navProducts: "Products",
-        navClients: "Clients",
-        navReports: "Reports",
-        navContact: "Contact",
-
-        inventory: "Inventory",
-        registerSale: "Register Fiado Sale",
-
-        inventoryTitle:
-            "Your inventory, always exact",
-
-        inventorySubtitle:
-            "Showing core products and add option. Use search bar to look up items.",
-
-        searchPlaceholder:
-            "Search products, pantry, drinks...",
-
-        stock:
-            "Stock:",
-
-        edit:
-            "Edit",
-
-        delete:
-            "Delete",
-
-        addNewProduct:
-            "Add New Product",
-
-        addSubtitle:
-            "Create a new item",
-
-        addProduct:
-            "Add New Product",
-
-        productName:
-            "Product name",
-
-        category:
-            "Category",
-
-        price:
-            "Price (B/.)",
-
-        unit:
-            "Unit",
-
-        cancel:
-            "Cancel",
-
-        save:
-            "Save product",
-
-        saleTitle:
-            "Register Fiado Sale",
-
-        saleText:
-            "Select a client and add the products sold on credit.",
-
-        client:
-            "Client",
-
-        saleProduct:
-            "Product",
-
-        quantity:
-            "Quantity",
-
-        register:
-            "Register"
-
-    },
-
-
-    es: {
-
-        navHome:
-            "Inicio",
-
-        navCredit:
-            "Fiado",
-
-        navProducts:
-            "Productos",
-
-        navClients:
-            "Clientes",
-
-        navReports:
-            "Reportes",
-
-        navContact:
-            "Contacto",
-
-        inventory:
-            "Inventario",
-
-        registerSale:
-            "Registrar venta fiada",
-
-        inventoryTitle:
-            "Tu inventario, siempre exacto",
-
-        inventorySubtitle:
-            "Productos principales y opción para agregar. Usa la barra de búsqueda para encontrar artículos.",
-
-        searchPlaceholder:
-            "Buscar productos, abarrotes, bebidas...",
-
-        stock:
-            "Existencias:",
-
-        edit:
-            "Editar",
-
-        delete:
-            "Eliminar",
-
-        addNewProduct:
-            "Agregar nuevo producto",
-
-        addSubtitle:
-            "Crea un nuevo artículo",
-
-        addProduct:
-            "Agregar nuevo producto",
-
-        productName:
-            "Nombre del producto",
-
-        category:
-            "Categoría",
-
-        price:
-            "Precio (B/.)",
-
-        unit:
-            "Unidad",
-
-        cancel:
-            "Cancelar",
-
-        save:
-            "Guardar producto",
-
-        saleTitle:
-            "Registrar venta fiada",
-
-        saleText:
-            "Selecciona un cliente y agrega los productos vendidos a crédito.",
-
-        client:
-            "Cliente",
-
-        saleProduct:
-            "Producto",
-
-        quantity:
-            "Cantidad",
-
-        register:
-            "Registrar"
-
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme Toggle Functionality
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (themeToggleBtn) {
+    const icon = themeToggleBtn.querySelector('i');
+    function applyTheme(theme) {
+      const isDark = theme === 'dark';
+      document.body.classList.toggle('dark-mode', isDark);
+      if (icon) {
+        icon.classList.toggle('fa-moon', !isDark);
+        icon.classList.toggle('fa-sun', isDark);
+      }
     }
+    const savedTheme = localStorage.getItem('fiao-theme') || 'light';
+    applyTheme(savedTheme);
 
-};
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.body.classList.contains('dark-mode');
+      const newTheme = isDark ? 'light' : 'dark';
+      localStorage.setItem('fiao-theme', newTheme);
+      applyTheme(newTheme);
+    });
+  }
 
+  // Render initial products
+  renderProducts();
+  populateFiadoProductSelect();
 
-/* =========================================
-   VARIABLES
-========================================= */
+  // Set default date for fiado form
+  const fiadoDateInput = document.getElementById('fiado-date');
+  if (fiadoDateInput) {
+    fiadoDateInput.valueAsDate = new Date();
+  }
 
-let products =
-    JSON.parse(
-        localStorage.getItem("fiaoProducts")
-    ) || initialProducts;
+  // Tab switching
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
 
+      btn.classList.add('active');
+      const targetTab = btn.getAttribute('data-tab');
+      document.getElementById(`${targetTab}-tab`).classList.add('active');
+    });
+  });
 
-let language =
-    localStorage.getItem("fiaoLanguage")
-    || "es";
+  // Modal handlers
+  const modal = document.getElementById('product-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const cancelModalBtn = document.getElementById('cancel-modal-btn');
+  const uploadBox = document.getElementById('upload-box');
+  const fileInput = document.getElementById('product-file-input');
 
+  uploadBox.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files && e.target.files[0]) {
+      document.getElementById('upload-label').textContent = e.target.files[0].name;
+    }
+  });
 
-let isDark =
-    localStorage.getItem("fiaoDark")
-    === "true";
+  const closeModal = () => {
+    modal.classList.remove('active');
+    document.getElementById('product-form').reset();
+    document.getElementById('upload-label').textContent = "Click to upload photo from files";
+    editingProductId = null;
+  };
 
+  closeModalBtn.addEventListener('click', closeModal);
+  cancelModalBtn.addEventListener('click', closeModal);
 
-/* =========================================
-   ELEMENTS
-========================================= */
+  // Search filter
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    renderProducts(term);
+  });
 
-const grid =
-    document.getElementById("productGrid");
+  // Product Form Submit (Add/Edit)
+  const productForm = document.getElementById('product-form');
+  productForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('product-name').value;
+    const category = document.getElementById('product-category').value;
+    const unit = document.getElementById('product-unit').value;
+    const price = parseFloat(document.getElementById('product-price').value);
+    const stock = parseInt(document.getElementById('product-stock').value);
+    const imageUrl = document.getElementById('product-image-url').value;
 
+    let image = imageUrl || "./asset/img/Pan.png"; // Fallback image
 
-const searchInput =
-    document.getElementById("searchInput");
-
-
-const modal =
-    document.getElementById("productModal");
-
-
-const form =
-    document.getElementById("productForm");
-
-
-const editingId =
-    document.getElementById("editingId");
-
-
-/* =========================================
-   SAVE DATA
-========================================= */
-
-function saveState() {
-
-    localStorage.setItem(
-        "fiaoProducts",
-        JSON.stringify(products)
-    );
-
-}
-
-
-/* =========================================
-   TRANSLATION FUNCTION
-========================================= */
-
-function t(key) {
-
-    return translations[language][key]
-        || key;
-
-}
-
-
-/* =========================================
-   APPLY LANGUAGE
-========================================= */
-
-function applyLanguage() {
-
-    document.documentElement.lang =
-        language;
-
-
-    document
-        .querySelectorAll("[data-i18n]")
-        .forEach(element => {
-
-            const key =
-                element.dataset.i18n;
-
-            if (
-                translations[language][key]
-            ) {
-
-                element.textContent =
-                    translations[language][key];
-
-            }
-
-        });
-
-
-    document
-        .querySelectorAll(
-            "[data-i18n-placeholder]"
-        )
-        .forEach(element => {
-
-            const key =
-                element.dataset.i18nPlaceholder;
-
-            element.placeholder =
-                t(key);
-
-        });
-
-
-    document.getElementById(
-        "languageLabel"
-    ).textContent =
-        language === "es"
-            ? "EN"
-            : "ES";
-
+    if (editingProductId) {
+      // Edit existing
+      const prod = products.find(p => p.id === editingProductId);
+      if (prod) {
+        prod.name = name;
+        prod.category = category;
+        prod.unit = unit;
+        prod.price = price;
+        prod.stock = stock;
+        if (imageUrl) prod.image = imageUrl;
+      }
+    } else {
+      // Add new
+      const newProd = {
+        id: Date.now(),
+        name,
+        category,
+        unit,
+        price,
+        stock,
+        unitAbbr: unit.split(' ')[0],
+        image
+      };
+      products.push(newProd);
+    }
 
     renderProducts();
-
-    populateSaleProducts();
-
-}
-
-
-/* =========================================
-   RENDER PRODUCTS
-========================================= */
-
-function renderProducts() {
-
-    const query =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-
-    const filtered =
-        products.filter(product => {
-
-            return `${product.name}
-                    ${product.category}
-                    ${product.unit}`
-                .toLowerCase()
-                .includes(query);
-
-        });
-
-
-    grid.innerHTML = "";
-
-
-    filtered.forEach(product => {
-
-        const card =
-            document.createElement("article");
-
-
-        card.className =
-            "product-card";
-
-
-        card.innerHTML = `
-
-            <div class="product-head">
-
-                <img
-                    class="product-image"
-                    src="${product.image || "assets/product.svg"}"
-                    alt="${escapeHtml(product.name)}"
-                >
-
-                <div class="product-info">
-
-                    <span class="category">
-
-                        ${escapeHtml(
-                            product.category
-                        )}
-
-                    </span>
-
-
-                    <h2 class="product-name">
-
-                        ${escapeHtml(
-                            product.name
-                        )}
-
-                    </h2>
-
-
-                    <p class="product-price">
-
-                        B/. ${Number(
-                            product.price
-                        ).toFixed(2)}
-
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="stock-box">
-
-                <span>
-
-                    ${t("stock")}
-
-                </span>
-
-
-                <span class="stock-number">
-
-                    ${Number(product.stock)}
-
-                    ${escapeHtml(
-                        product.unit
-                    )}
-
-                </span>
-
-            </div>
-
-
-            <div class="card-actions">
-
-                <button
-                    type="button"
-                    data-action="edit"
-                    data-id="${product.id}">
-
-                    ✎ ${t("edit")}
-
-                </button>
-
-
-                <button
-                    type="button"
-                    data-action="delete"
-                    data-id="${product.id}">
-
-                    ▣ ${t("delete")}
-
-                </button>
-
-            </div>
-
-        `;
-
-
-        grid.appendChild(card);
-
-    });
-
-
-    /* ADD PRODUCT CARD */
-
-    const addCard =
-        document.createElement("button");
-
-
-    addCard.type =
-        "button";
-
-
-    addCard.className =
-        "add-card";
-
-
-    addCard.innerHTML = `
-
-        <div class="add-icon">
-            +
+    populateFiadoProductSelect();
+    closeModal();
+  });
+
+  // Fiado Total calculation
+  const fiadoProductSelect = document.getElementById('fiado-product');
+  const fiadoQuantityInput = document.getElementById('fiado-quantity');
+  const fiadoTotalDisplay = document.getElementById('fiado-total-display');
+
+  function updateFiadoTotal() {
+    const selectedProdId = parseInt(fiadoProductSelect.value);
+    const qty = parseInt(fiadoQuantityInput.value) || 0;
+    const prod = products.find(p => p.id === selectedProdId);
+
+    if (prod) {
+      const total = prod.price * qty;
+      fiadoTotalDisplay.textContent = `B/. ${total.toFixed(2)}`;
+    }
+  }
+
+  fiadoProductSelect.addEventListener('change', updateFiadoTotal);
+  fiadoQuantityInput.addEventListener('input', updateFiadoTotal);
+
+  // Register Fiado Sale Form Submit
+  const fiadoForm = document.getElementById('fiado-sale-form');
+  fiadoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const client = document.getElementById('fiado-client').value;
+    const selectedProdId = parseInt(fiadoProductSelect.value);
+    const qty = parseInt(fiadoQuantityInput.value);
+    const prod = products.find(p => p.id === selectedProdId);
+
+    if (prod) {
+      const total = prod.price * qty;
+      const recentList = document.getElementById('recent-sales-list');
+
+      const newItem = document.createElement('div');
+      newItem.className = 'recent-sale-item';
+      newItem.innerHTML = `
+        <span><strong>${client}</strong> - ${prod.name} (x${qty})</span>
+        <div class="sale-actions">
+          <span class="sale-price">B/. ${total.toFixed(2)}</span>
+          <button class="delete-sale-btn" title="Delete Sale"><i class="fa-solid fa-trash"></i></button>
         </div>
+      `;
 
+      newItem.querySelector('.delete-sale-btn').addEventListener('click', () => {
+        newItem.remove();
+      });
 
-        <div class="add-title">
+      recentList.prepend(newItem);
+      alert(`Fiado sale registered for ${client}!`);
+    }
+  });
+});
 
-            ${t("addNewProduct")}
+// Render Products to Grid
+function renderProducts(searchTerm = '') {
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = '';
 
+  const filtered = products.filter(p => p.name.toLowerCase().includes(searchTerm));
+
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <div>
+        <div class="product-card-top">
+          <div class="product-img-box">
+            <img src="${p.image}" alt="${p.name}">
+          </div>
+          <div class="product-info-details">
+            <span class="category-badge">${p.category}</span>
+            <h3 class="product-title">${p.name}</h3>
+            <span class="product-price-tag">B/. ${p.price.toFixed(2)}</span>
+          </div>
         </div>
-
-
-        <div class="add-subtitle">
-
-            ${t("addSubtitle")}
-
+        <div class="stock-box">
+          <span>Stock:</span>
+          <span>${p.stock} ${p.unitAbbr || 'Unit'}</span>
         </div>
-
+      </div>
+      <div class="card-actions-row">
+        <button class="btn-card-action edit-btn" onclick="openEditModal(${p.id})">
+          <i class="fa-solid fa-pencil"></i> Edit
+        </button>
+        <button class="btn-card-action delete-btn" onclick="deleteProduct(${p.id})">
+          <i class="fa-solid fa-trash"></i> Delete
+        </button>
+      </div>
     `;
+    grid.appendChild(card);
+  });
 
-
-    addCard.addEventListener(
-        "click",
-        () => openModal()
-    );
-
-
-    grid.appendChild(addCard);
-
+  // Always append Add New Product Card
+  const addCard = document.createElement('div');
+  addCard.className = 'add-product-card';
+  addCard.onclick = openAddModal;
+  addCard.innerHTML = `
+    <i class="fa-solid fa-plus add-icon-plus"></i>
+    <h3 class="add-text-title">Add New Product</h3>
+    <p class="add-text-sub">Create a new item</p>
+  `;
+  grid.appendChild(addCard);
 }
 
-
-/* =========================================
-   SECURITY
-========================================= */
-
-function escapeHtml(value) {
-
-    return String(value)
-
-        .replaceAll("&", "&amp;")
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
+// Open Add Modal
+function openAddModal() {
+  editingProductId = null;
+  document.getElementById('modal-title-text').textContent = "Add New Product";
+  document.getElementById('product-form').reset();
+  document.getElementById('product-modal').classList.add('active');
 }
 
+// Open Edit Modal
+function openEditModal(id) {
+  const prod = products.find(p => p.id === id);
+  if (!prod) return;
 
-/* =========================================
-   OPEN MODAL
-========================================= */
+  editingProductId = id;
+  document.getElementById('modal-title-text').textContent = "Edit Product";
+  document.getElementById('product-name').value = prod.name;
+  document.getElementById('product-category').value = prod.category;
+  document.getElementById('product-unit').value = prod.unit;
+  document.getElementById('product-price').value = prod.price;
+  document.getElementById('product-stock').value = prod.stock;
+  document.getElementById('product-image-url').value = prod.image;
 
-function openModal(product = null) {
-
-    modal.classList.remove(
-        "hidden"
-    );
-
-
-    if (product) {
-
-        editingId.value =
-            product.id;
-
-
-        document.getElementById(
-            "modalTitle"
-        ).textContent =
-            t("edit");
-
-
-        document.getElementById(
-            "productName"
-        ).value =
-            product.name;
-
-
-        document.getElementById(
-            "productCategory"
-        ).value =
-            product.category;
-
-
-        document.getElementById(
-            "productPrice"
-        ).value =
-            product.price;
-
-
-        document.getElementById(
-            "productStock"
-        ).value =
-            product.stock;
-
-
-        document.getElementById(
-            "productUnit"
-        ).value =
-            product.unit;
-
-    }
-
-    else {
-
-        editingId.value =
-            "";
-
-
-        document.getElementById(
-            "modalTitle"
-        ).textContent =
-            t("addProduct");
-
-
-        form.reset();
-
-
-        document.getElementById(
-            "productUnit"
-        ).value =
-            language === "es"
-                ? "Unidad"
-                : "Unit";
-
-    }
-
-
-    document.getElementById(
-        "productName"
-    ).focus();
-
+  document.getElementById('product-modal').classList.add('active');
 }
 
-
-/* =========================================
-   CLOSE MODAL
-========================================= */
-
-function closeModal() {
-
-    modal.classList.add(
-        "hidden"
-    );
-
-    form.reset();
-
-    editingId.value =
-        "";
-
+// Delete Product
+function deleteProduct(id) {
+  if (confirm("Are you sure you want to delete this product?")) {
+    products = products.filter(p => p.id !== id);
+    renderProducts();
+    populateFiadoProductSelect();
+  }
 }
 
-
-/* =========================================
-   EDIT / DELETE
-========================================= */
-
-grid.addEventListener(
-    "click",
-    event => {
-
-        const button =
-            event.target.closest(
-                "button[data-action]"
-            );
-
-
-        if (!button) return;
-
-
-        const id =
-            Number(
-                button.dataset.id
-            );
-
-
-        const product =
-            products.find(
-                p => p.id === id
-            );
-
-
-        if (!product) return;
-
-
-        /* EDIT */
-
-        if (
-            button.dataset.action
-            === "edit"
-        ) {
-
-            openModal(product);
-
-        }
-
-
-        /* DELETE */
-
-        if (
-            button.dataset.action
-            === "delete"
-        ) {
-
-            const message =
-                language === "es"
-
-                    ? `¿Eliminar "${product.name}" del inventario?`
-
-                    : `Delete "${product.name}" from inventory?`;
-
-
-            if (
-                confirm(message)
-            ) {
-
-                products =
-                    products.filter(
-                        p => p.id !== id
-                    );
-
-
-                saveState();
-
-                renderProducts();
-
-                populateSaleProducts();
-
-                showToast(
-                    language === "es"
-                        ? "Producto eliminado."
-                        : "Product deleted."
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   SAVE PRODUCT
-========================================= */
-
-form.addEventListener(
-    "submit",
-    event => {
-
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById(
-                "productName"
-            ).value.trim();
-
-
-        const category =
-            document.getElementById(
-                "productCategory"
-            ).value;
-
-
-        const price =
-            Number(
-                document.getElementById(
-                    "productPrice"
-                ).value
-            );
-
-
-        const stock =
-            Number(
-                document.getElementById(
-                    "productStock"
-                ).value
-            );
-
-
-        const unit =
-            document.getElementById(
-                "productUnit"
-            ).value.trim();
-
-
-        if (
-            !name ||
-            Number.isNaN(price) ||
-            Number.isNaN(stock) ||
-            !unit
-        ) {
-
-            return;
-
-        }
-
-
-        const existingId =
-            Number(
-                editingId.value
-            );
-
-
-        /* EDIT EXISTING */
-
-        if (existingId) {
-
-            const index =
-                products.findIndex(
-                    p =>
-                        p.id
-                        === existingId
-                );
-
-
-            if (index !== -1) {
-
-                products[index] = {
-
-                    ...products[index],
-
-                    name,
-                    category,
-                    price,
-                    stock,
-                    unit
-
-                };
-
-            }
-
-        }
-
-
-        /* ADD NEW */
-
-        else {
-
-            products.push({
-
-                id:
-                    Date.now(),
-
-                name,
-                category,
-                price,
-                stock,
-                unit,
-
-                image:
-                    "assets/product.svg"
-
-            });
-
-        }
-
-
-        saveState();
-
-        renderProducts();
-
-        populateSaleProducts();
-
-        closeModal();
-
-
-        showToast(
-
-            language === "es"
-
-                ? "Inventario actualizado."
-
-                : "Inventory updated."
-
-        );
-
-    }
-);
-
-
-/* =========================================
-   SALE PRODUCTS
-========================================= */
-
-function populateSaleProducts() {
-
-    const select =
-        document.getElementById(
-            "saleProduct"
-        );
-
-
-    select.innerHTML =
-        products.map(product => `
-
-            <option value="${product.id}">
-
-                ${escapeHtml(
-                    product.name
-                )}
-
-                —
-                B/. ${Number(
-                    product.price
-                ).toFixed(2)}
-
-            </option>
-
-        `).join("");
-
+// Populate product select in Fiado tab
+function populateFiadoProductSelect() {
+  const select = document.getElementById('fiado-product');
+  if (!select) return;
+
+  select.innerHTML = '';
+  products.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = `${p.name} (B/. ${p.price.toFixed(2)})`;
+    select.appendChild(opt);
+  });
+
+  // Trigger change to update total
+  select.dispatchEvent(new Event('change'));
 }
-
-
-/* =========================================
-   REGISTER FIADO SALE
-========================================= */
-
-document
-    .getElementById(
-        "registerSaleBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            const product =
-                products.find(
-                    p =>
-                        p.id
-                        === Number(
-                            document
-                                .getElementById(
-                                    "saleProduct"
-                                )
-                                .value
-                        )
-                );
-
-
-            const quantity =
-                Number(
-                    document
-                        .getElementById(
-                            "saleQuantity"
-                        )
-                        .value
-                );
-
-
-            const client =
-                document
-                    .getElementById(
-                        "clientName"
-                    )
-                    .value
-                    .trim();
-
-
-            if (
-                !product ||
-                quantity < 1 ||
-                !client
-            ) {
-
-                document
-                    .getElementById(
-                        "saleMessage"
-                    )
-                    .textContent =
-
-                    language === "es"
-
-                        ? "Completa cliente, producto y cantidad."
-
-                        : "Complete client, product and quantity.";
-
-                return;
-
-            }
-
-
-            if (
-                quantity >
-                product.stock
-            ) {
-
-                document
-                    .getElementById(
-                        "saleMessage"
-                    )
-                    .textContent =
-
-                    language === "es"
-
-                        ? "No hay suficiente inventario."
-
-                        : "There is not enough inventory.";
-
-                return;
-
-            }
-
-
-            /* REDUCE STOCK */
-
-            product.stock -=
-                quantity;
-
-
-            saveState();
-
-            renderProducts();
-
-            populateSaleProducts();
-
-
-            document
-                .getElementById(
-                    "saleMessage"
-                )
-                .textContent =
-
-                language === "es"
-
-                    ? `Venta fiada registrada para ${client}. Se descontaron ${quantity} ${product.unit}.`
-
-                    : `Credit sale registered for ${client}. ${quantity} ${product.unit} deducted.`;
-
-
-            document
-                .getElementById(
-                    "saleQuantity"
-                )
-                .value = 1;
-
-        }
-    );
-
-
-/* =========================================
-   SEARCH
-========================================= */
-
-searchInput.addEventListener(
-    "input",
-    renderProducts
-);
-
-
-/* =========================================
-   DARK MODE
-========================================= */
-
-document
-    .getElementById(
-        "themeBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            isDark =
-                !isDark;
-
-
-            document.body.classList.toggle(
-                "dark",
-                isDark
-            );
-
-
-            localStorage.setItem(
-                "fiaoDark",
-                isDark
-            );
-
-
-            document.getElementById(
-                "themeIcon"
-            ).textContent =
-                isDark
-                    ? "☀"
-                    : "☾";
-
-        }
-    );
-
-
-/* =========================================
-   LANGUAGE
-========================================= */
-
-document
-    .getElementById(
-        "languageBtn"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            language =
-                language === "es"
-                    ? "en"
-                    : "es";
-
-
-            localStorage.setItem(
-                "fiaoLanguage",
-                language
-            );
-
-
-            applyLanguage();
-
-        }
-    );
-
-
-/* =========================================
-   MODAL BUTTONS
-========================================= */
-
-document
-    .getElementById(
-        "closeModal"
-    )
-    .addEventListener(
-        "click",
-        closeModal
-    );
-
-
-document
-    .getElementById(
-        "cancelModal"
-    )
-    .addEventListener(
-        "click",
-        closeModal
-    );
-
-
-modal.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === modal
-        ) {
-
-            closeModal();
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   INVENTORY TAB
-========================================= */
-
-document
-    .getElementById(
-        "inventoryTab"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            document
-                .getElementById(
-                    "inventoryTab"
-                )
-                .classList
-                .add("active");
-
-
-            document
-                .getElementById(
-                    "saleTab"
-                )
-                .classList
-                .remove("active");
-
-
-            document
-                .getElementById(
-                    "inventoryView"
-                )
-                .classList
-                .remove("hidden");
-
-
-            document
-                .getElementById(
-                    "saleView"
-                )
-                .classList
-                .add("hidden");
-
-        }
-    );
-
-
-/* =========================================
-   SALE TAB
-========================================= */
-
-document
-    .getElementById(
-        "saleTab"
-    )
-    .addEventListener(
-        "click",
-        () => {
-
-            document
-                .getElementById(
-                    "saleTab"
-                )
-                .classList
-                .add("active");
-
-
-            document
-                .getElementById(
-                    "inventoryTab"
-                )
-                .classList
-                .remove("active");
-
-
-            document
-                .getElementById(
-                    "inventoryView"
-                )
-                .classList
-                .add("hidden");
-
-
-            document
-                .getElementById(
-                    "saleView"
-                )
-                .classList
-                .remove("hidden");
-
-
-            populateSaleProducts();
-
-        }
-    );
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function showToast(message) {
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        window.toastTimer
-    );
-
-
-    window.toastTimer =
-        setTimeout(
-            () =>
-                toast.classList.remove(
-                    "show"
-                ),
-            2200
-        );
-
-}
-
-
-/* =========================================
-   INITIALIZATION
-========================================= */
-
-document.body.classList.toggle(
-    "dark",
-    isDark
-);
-
-
-document.getElementById(
-    "themeIcon"
-).textContent =
-    isDark
-        ? "☀"
-        : "☾";
-
-
-applyLanguage();

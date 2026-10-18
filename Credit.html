@@ -1,353 +1,340 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FIA'O - Debts & Payments</title>
-
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Estilos CSS externo -->
-  <link rel="stylesheet" href="Credit.css">
+  <!-- CSS Stylesheet obligatorio -->
+  <link rel="stylesheet" href="asset/css/Credit.css">
 </head>
 <body>
 
-  <!-- Navegación Principal Superior -->
+  <!-- FIA'O NAVIGATION BAR -->
   <header>
     <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">
-          <img src="Imagenes/Logo Fiao.png" alt="FIA'O Logo" class="brand-logo-img">
+
+      <!-- Logo -->
+      <div class="navbar-brand">
+        <a href="Index.html">
+          <img
+            src="asset/img/Logo.png"
+            alt="FIA'O Logo"
+            class="navbar-logo"
+          >
         </a>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="credit.html" class="active">Credit</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Clients</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Contact</a></li>
+
+      <!-- Navigation Links -->
+      <ul class="navbar-menu">
+        <li><a href="Index.html" class="nav-link">Home</a></li>
+        <li><a href="Credit.html" class="nav-link active">Credit</a></li>
+        <li><a href="Products.html" class="nav-link">Products</a></li>
+        <li><a href="Clients.html" class="nav-link">Clients</a></li>
+        <li><a href="Reports.html" class="nav-link">Reports</a></li>
+        <li><a href="Conect.html" class="nav-link">Contact</a></li>
       </ul>
+
+      <!-- Action Icons -->
+      <div class="navbar-actions">
+
+        <button
+          class="icon-btn"
+          id="notifications-btn"
+          title="Notifications"
+          type="button"
+        >
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </button>
+
+        <button
+          class="icon-btn"
+          id="theme-toggle"
+          title="Toggle Dark/Light Mode"
+          type="button"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+
+        <a
+          href="User.html"
+          class="user-avatar-btn"
+          title="User Profile"
+        >
+          <i class="fa-regular fa-circle-user"></i>
+        </a>
+
+      </div>
     </nav>
   </header>
 
-  <!-- Sub-barra de Utilidades (Notificaciones, Selector de Idioma y Cambio de Tema) -->
-  <div class="top-utility-bar">
-    <div class="utility-container">
-      <!-- Botón Notificaciones con badge -->
-      <button class="btn-icon notification-btn" id="btn-notifications" aria-label="Notifications">
-        <i class="fa-regular fa-bell"></i>
-        <span class="badge">3</span>
-      </button>
-
-      <!-- Selector de Idioma -->
-      <button class="btn-utility language-btn" id="btn-language">
-        <i class="fa-solid fa-globe"></i>
-        <span id="lang-text">ES</span>
-      </button>
-
-      <!-- Botón Cambio de Tema (Modo Claro/Oscuro) -->
-      <button class="btn-icon theme-toggle-btn" id="btn-theme-toggle" aria-label="Toggle dark mode">
-        <i class="fa-regular fa-moon" id="theme-icon"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Encabezado Principal de la Página -->
-  <section class="page-header-section">
-    <div class="header-container">
-      <h1 class="page-title">Debts <span>& Payments</span></h1>
+  <!-- Main Content Container -->
+  <main class="credit-main-container">
+    
+    <!-- Title & Subtitle Section -->
+    <section class="page-title-section">
+      <h1 class="page-title">Debts <span class="highlight-yellow">&amp;</span> Payments</h1>
       <p class="page-subtitle">Manage customer debts, register payments, and track balances easily.</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contenido Principal: Grid Dashboard -->
-  <main class="dashboard-grid">
+    <!-- Grid Dashboard Layout -->
+    <div class="credit-grid-layout">
 
-    <!-- COLUMNA IZQUIERDA -->
-    <div class="grid-column col-left">
-      
-      <!-- Card: Select Customer -->
-      <div class="card card-select-customer">
-        <label for="customer-select" class="card-label">
-          <i class="fa-solid fa-user"></i> Select a Customer
-        </label>
-        <div class="select-wrapper">
-          <select id="customer-select" name="customer">
-            <option value="ramon-batista" selected>Ramón Batista</option>
-            <option value="carlos-gomez">Carlos Gómez</option>
-            <option value="ana-martinez">Ana Martínez</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Card: Customer Detail & Debt Progress -->
-      <div class="card card-customer-info">
-        <div class="customer-header">
-          <i class="fa-solid fa-circle-user customer-avatar-icon"></i>
-          <h2 class="customer-name">Ramón Batista</h2>
-        </div>
-
-        <div class="debt-metrics-row">
-          <div class="metric-box">
-            <span class="metric-label">Current Debt</span>
-            <span class="metric-value text-red">B/. 35.00</span>
-          </div>
-          <div class="metric-box">
-            <span class="metric-label">Credit Limit</span>
-            <span class="metric-value">B/. 100.00</span>
+      <!-- Left Column -->
+      <div class="grid-column left-column">
+        
+        <!-- Select Customer Box -->
+        <div class="credit-card">
+          <label for="customer-select" class="card-label">
+            <i class="fa-regular fa-user"></i> Select a Customer
+          </label>
+          <div class="select-wrapper">
+            <select id="customer-select" class="custom-select">
+              <option value="ramon">Ramón Batista</option>
+              <option value="carlos">Carlos Gómez</option>
+              <option value="ana">Ana Martínez</option>
+            </select>
           </div>
         </div>
 
-        <div class="progress-bar-container">
-          <div class="progress-bar-track">
+        <!-- Customer Summary Box -->
+        <div class="credit-card">
+          <h2 class="customer-name">
+            <i class="fa-solid fa-circle-user icon-red"></i> Ramón Batista
+          </h2>
+          <div class="debt-metrics-row">
+            <div class="metric-box">
+              <span class="metric-label">Current Debt</span>
+              <span class="metric-value text-red">B/. 35.00</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Credit Limit</span>
+              <span class="metric-value">B/. 100.00</span>
+            </div>
+          </div>
+
+          <div class="progress-bar-wrapper">
             <div class="progress-bar-fill" style="width: 35%;"></div>
           </div>
-          <div class="progress-labels">
+          <div class="progress-bar-labels">
             <span>35% used</span>
             <span>Limit: B/. 100.00</span>
           </div>
         </div>
-      </div>
 
-      <!-- Card: Automatic Blocking -->
-      <div class="card card-auto-blocking">
-        <div class="blocking-header">
-          <div class="blocking-title">
-            <i class="fa-solid fa-shield-halved text-red"></i>
-            <h3>Automatic Blocking</h3>
-          </div>
-          <label class="switch">
-            <input type="checkbox" id="toggle-blocking" checked>
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <p class="blocking-desc">If a customer exceeds the debt limit, system prevents new credits.</p>
-      </div>
-
-    </div>
-
-    <!-- COLUMNA CENTRO -->
-    <div class="grid-column col-center">
-      
-      <!-- Card: Debt History -->
-      <div class="card card-debt-history">
-        <h3 class="card-title">Debt History</h3>
-        <p class="card-subtitle">Track all purchases and payments.</p>
-
-        <div class="history-scroll-container">
-          <!-- Item 1 -->
-          <div class="history-item">
-            <div class="date-badge">
-              <span class="date-day">14</span>
-              <span class="date-month">JUL</span>
+        <!-- Automatic Blocking Box -->
+        <div class="credit-card automatic-blocking-card">
+          <div class="blocking-header">
+            <i class="fa-solid fa-shield-halved blocking-icon"></i>
+            <div>
+              <h3 class="blocking-title">Automatic Blocking</h3>
+              <p class="blocking-desc">If a customer exceeds the debt limit, system prevents new credits.</p>
             </div>
-            <div class="item-icon-circle">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <div class="item-details">
-              <h4>Milk (2)</h4>
-              <p>Fiado</p>
-            </div>
-            <div class="item-amount-status">
-              <span class="amount text-red">B/. 8.00</span>
-              <span class="status-pill pending">Pending</span>
-            </div>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="history-item">
-            <div class="date-badge">
-              <span class="date-day">09</span>
-              <span class="date-month">JUL</span>
-            </div>
-            <div class="item-icon-circle">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <div class="item-details">
-              <h4>Detergent</h4>
-              <p>Fiado</p>
-            </div>
-            <div class="item-amount-status">
-              <span class="amount text-red">B/. 4.50</span>
-              <span class="status-pill pending">Pending</span>
-            </div>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="history-item">
-            <div class="date-badge">
-              <span class="date-day">05</span>
-              <span class="date-month">JUL</span>
-            </div>
-            <div class="item-icon-circle">
-              <i class="fa-solid fa-arrows-rotate"></i>
-            </div>
-            <div class="item-details">
-              <h4>Payment Received</h4>
-              <p>Abono</p>
-            </div>
-            <div class="item-amount-status">
-              <span class="amount text-green">-B/. 20.00</span>
-              <span class="status-pill paid">Paid</span>
-            </div>
-          </div>
-
-          <!-- Item 4 -->
-          <div class="history-item">
-            <div class="date-badge">
-              <span class="date-day">01</span>
-              <span class="date-month">JUL</span>
-            </div>
-            <div class="item-icon-circle">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <div class="item-details">
-              <h4>Groceries Pack</h4>
-              <p>Fiado</p>
-            </div>
-            <div class="item-amount-status">
-              <span class="amount text-red">B/. --</span>
-              <span class="status-pill pending">Pending</span>
-            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="auto-block-toggle" checked>
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
 
-        <a href="#" class="link-full-history">View Full History &rarr;</a>
       </div>
 
-      <!-- Card: Register Payment -->
-      <div class="card card-register-payment">
-        <h3 class="card-title">Register Payment</h3>
-        <p class="card-subtitle">Record payments made by the customer.</p>
+      <!-- Center Column -->
+      <div class="grid-column center-column">
+        
+        <!-- Debt History Box -->
+        <div class="credit-card history-card">
+          <h2 class="card-title">Debt History</h2>
+          <p class="card-subtitle">Track all purchases and payments.</p>
 
-        <form action="#" method="POST" onsubmit="event.preventDefault();">
-          <div class="form-group">
-            <label for="payment-amount">Payment Amount</label>
-            <div class="input-payment-box">
-              <input type="text" id="payment-amount" name="amount" value="B/. 0.00">
+          <div class="history-list-scrollable">
+            
+            <div class="history-item">
+              <div class="date-badge">
+                <span class="date-day">14</span>
+                <span class="date-month">JUL</span>
+              </div>
+              <div class="history-icon-wrapper">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <div class="history-info">
+                <h4>Milk (2)</h4>
+                <p>Fiado</p>
+              </div>
+              <div class="history-amount text-red">B/. 8.00</div>
+              <span class="badge badge-pending">Pending</span>
             </div>
-          </div>
 
-          <div class="payment-type-group">
-            <label class="form-label-title">Payment Type</label>
-            <div class="radio-options-row">
-              <label class="radio-container">
-                <input type="radio" name="payment_type" value="partial" checked>
-                <span class="radio-custom"></span>
-                Partial Payment
-              </label>
-              <label class="radio-container">
-                <input type="radio" name="payment_type" value="full">
-                <span class="radio-custom"></span>
-                Full Payment
-              </label>
+            <div class="history-item">
+              <div class="date-badge">
+                <span class="date-day">09</span>
+                <span class="date-month">JUL</span>
+              </div>
+              <div class="history-icon-wrapper">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <div class="history-info">
+                <h4>Detergent</h4>
+                <p>Fiado</p>
+              </div>
+              <div class="history-amount text-red">B/. 4.50</div>
+              <span class="badge badge-pending">Pending</span>
             </div>
+
+            <div class="history-item">
+              <div class="date-badge">
+                <span class="date-day">05</span>
+                <span class="date-month">JUL</span>
+              </div>
+              <div class="history-icon-wrapper icon-green">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+              </div>
+              <div class="history-info">
+                <h4>Payment Received</h4>
+                <p>Abono</p>
+              </div>
+              <div class="history-amount text-green">-B/. 20.00</div>
+              <span class="badge badge-paid">Paid</span>
+            </div>
+
+            <div class="history-item">
+              <div class="date-badge">
+                <span class="date-day">01</span>
+                <span class="date-month">JUL</span>
+              </div>
+              <div class="history-icon-wrapper">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <div class="history-info">
+                <h4>Groceries Pack</h4>
+                <p>Fiado</p>
+              </div>
+              <div class="history-amount text-red">B/. 50.50</div>
+              <span class="badge badge-pending">Pending</span>
+            </div>
+
           </div>
 
-          <div class="payment-action-buttons">
-            <button type="button" class="btn-yellow-action">Register Payment</button>
-            <button type="button" class="btn-outline-action">Mark as Paid</button>
-          </div>
-        </form>
+          <a href="#" class="view-more-link">View Full History &rarr;</a>
+        </div>
+
+        <!-- Register Payment Box -->
+        <div class="credit-card">
+          <h2 class="card-title">Register Payment</h2>
+          <p class="card-subtitle">Record payments made by the customer.</p>
+
+          <form id="payment-form">
+            <div class="form-group">
+              <label for="payment-amount" class="input-label">Payment Amount</label>
+              <input type="text" id="payment-amount" class="custom-input" value="B/. 0.00">
+            </div>
+
+            <div class="payment-type-group">
+              <label class="input-label">Payment Type</label>
+              <div class="radio-options">
+                <label class="radio-label">
+                  <input type="radio" name="paymentType" value="partial" checked>
+                  Partial Payment
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="paymentType" value="full">
+                  Full Payment
+                </label>
+              </div>
+            </div>
+
+            <div class="action-buttons-row">
+              <button type="submit" class="btn btn-yellow-action">Register Payment</button>
+              <button type="button" class="btn btn-outline-action" id="mark-paid-btn">Mark as Paid</button>
+            </div>
+          </form>
+        </div>
+
       </div>
 
-    </div>
-
-    <!-- COLUMNA DERECHA -->
-    <div class="grid-column col-right">
-      
-      <!-- Card: Recent Activity -->
-      <div class="card card-recent-activity">
-        <h3 class="card-title">Recent Activity</h3>
-
-        <div class="activity-list">
-          <!-- Activity Item 1 -->
-          <div class="activity-item">
-            <div class="activity-icon-circle">
-              <i class="fa-solid fa-wallet"></i>
+      <!-- Right Column -->
+      <div class="grid-column right-column">
+        
+        <!-- Recent Activity Box -->
+        <div class="credit-card">
+          <h2 class="card-title">Recent Activity</h2>
+          
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+              <div class="activity-info">
+                <h4>Ramón Batista</h4>
+                <p>Paid B/. 15.00</p>
+              </div>
+              <span class="activity-time">Today <span class="dot dot-green"></span></span>
             </div>
-            <div class="activity-info">
-              <h4>Ramón Batista</h4>
-              <p>Paid B/. 15.00</p>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+              <div class="activity-info">
+                <h4>Carlos Gómez</h4>
+                <p>New debt: B/. 12.50</p>
+              </div>
+              <span class="activity-time">Yesterday <span class="dot dot-yellow"></span></span>
             </div>
-            <div class="activity-time">
-              Today <span class="status-dot green"></span>
+
+            <div class="activity-item">
+              <div class="activity-icon">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+              <div class="activity-info">
+                <h4>Ana Martínez</h4>
+                <p>Payment received: B/. 20.00</p>
+              </div>
+              <span class="activity-time">Yesterday <span class="dot dot-green"></span></span>
             </div>
           </div>
 
-          <!-- Activity Item 2 -->
-          <div class="activity-item">
-            <div class="activity-icon-circle">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <div class="activity-info">
-              <h4>Carlos Gómez</h4>
-              <p>New debt: B/. 12.50</p>
-            </div>
-            <div class="activity-time">
-              Yesterday <span class="status-dot orange"></span>
-            </div>
-          </div>
+          <a href="#" class="view-more-link">View all activity &rarr;</a>
+        </div>
 
-          <!-- Activity Item 3 -->
-          <div class="activity-item">
-            <div class="activity-icon-circle">
-              <i class="fa-solid fa-arrows-rotate"></i>
+        <!-- Debt Overview Box -->
+        <div class="credit-card">
+          <h2 class="card-title">Debt Overview</h2>
+
+          <div class="overview-grid">
+            <div class="overview-box">
+              <span class="overview-label">Outstanding Debt</span>
+              <span class="overview-value text-red">B/. 480.00</span>
             </div>
-            <div class="activity-info">
-              <h4>Ana Martínez</h4>
-              <p>Payment received: B/. 20.00</p>
+            <div class="overview-box">
+              <span class="overview-label">Payments Today</span>
+              <span class="overview-value text-red">B/. 150.00</span>
             </div>
-            <div class="activity-time">
-              Yesterday <span class="status-dot green"></span>
+            <div class="overview-box">
+              <span class="overview-label">Customers with Debt</span>
+              <span class="overview-value">18</span>
+            </div>
+            <div class="overview-box">
+              <span class="overview-label">Overdue</span>
+              <span class="overview-value">4</span>
             </div>
           </div>
         </div>
 
-        <a href="#" class="link-full-history">View all activity &rarr;</a>
-      </div>
-
-      <!-- Card: Debt Overview -->
-      <div class="card card-debt-overview">
-        <h3 class="card-title">Debt Overview</h3>
-
-        <div class="overview-grid">
-          <div class="overview-box">
-            <span class="overview-label">Outstanding Debt</span>
-            <span class="overview-value text-red">B/. 480.00</span>
-          </div>
-
-          <div class="overview-box">
-            <span class="overview-label">Payments Today</span>
-            <span class="overview-value text-red">B/. 150.00</span>
-          </div>
-
-          <div class="overview-box">
-            <span class="overview-label">Customers with Debt</span>
-            <span class="overview-value text-big">18</span>
-          </div>
-
-          <div class="overview-box">
-            <span class="overview-label">Overdue</span>
-            <span class="overview-value text-big text-red">4</span>
-          </div>
-        </div>
       </div>
 
     </div>
 
   </main>
 
-  <!-- Pie de página -->
-  <footer class="main-footer">
+  <!-- Page Footer -->
+  <footer class="credit-footer">
     <p>&copy; 2026. Manage today for a better tomorrow.</p>
   </footer>
 
-  <!-- Archivo JavaScript externo -->
-  <script src="Credit.js"></script>
+  <!-- Script File -->
+  <script src="asset/js/Credit.js"></script>
 </body>
 </html>

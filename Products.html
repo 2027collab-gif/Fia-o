@@ -1,460 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FIA'O - Inventory</title>
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="Products.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIA'O - Products & Inventory</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS Stylesheet para Products -->
+  <link rel="stylesheet" href="./asset/css/Products.css">
 </head>
-
 <body>
 
-    <!-- =========================
-         TOP NAVIGATION
-    ========================== -->
+  <!-- FIA'O NAVIGATION BAR -->
+  <header>
+    <nav class="navbar">
 
-    <header class="topbar">
+      <!-- Logo -->
+      <div class="navbar-brand">
+        <a href="Index.html">
+          <img
+            src="./asset/img/Logo.png"
+            alt="FIA'O Logo"
+            class="navbar-logo"
+          >
+        </a>
+      </div>
 
-        <a href="#" class="brand">
-            <img src="assets/fiao-logo.svg" alt="FIA'O Logo">
+      <!-- Navigation Links -->
+      <ul class="navbar-menu">
+        <li><a href="Index.html" class="nav-link">Home</a></li>
+        <li><a href="Credit.html" class="nav-link">Credit</a></li>
+        <li><a href="Products.html" class="nav-link active">Products</a></li>
+        <li><a href="Clients.html" class="nav-link">Clients</a></li>
+        <li><a href="Reports.html" class="nav-link">Reports</a></li>
+        <li><a href="Conect.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Action Icons -->
+      <div class="navbar-actions">
+
+        <button
+          class="icon-btn"
+          id="notifications-btn"
+          title="Notifications"
+          type="button"
+        >
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge">2</span>
+        </button>
+
+        <button
+          class="icon-btn"
+          id="theme-toggle"
+          title="Toggle Dark/Light Mode"
+          type="button"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+
+        <a
+          href="User.html"
+          class="user-avatar-btn"
+          title="User Profile"
+        >
+          <i class="fa-regular fa-circle-user"></i>
         </a>
 
-        <nav class="main-nav">
+      </div>
+    </nav>
+  </header>
 
-            <a href="#" data-i18n="navHome">
-                Home
-            </a>
+  <!-- Sub-header with Logo and Search Bar -->
+  <section class="sub-header-bar">
+    <div class="sub-header-container">
+      <div class="brand-sub">
+        <img src="./asset/img/Logo.png" alt="FIA'O Logo" class="sub-logo">
+      </div>
+      <div class="search-bar-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search products, pantry, drinks...">
+      </div>
+    </div>
+  </section>
 
-            <a href="#" data-i18n="navCredit">
-                Credit
-            </a>
+  <!-- Main Container -->
+  <main class="products-main-container">
 
-            <a href="#" data-i18n="navProducts">
-                Products
-            </a>
+    <!-- Tab Navigation Bar -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="tab-inventory-btn" data-tab="inventory">Inventory</button>
+      <button class="tab-btn" id="tab-fiado-btn" data-tab="fiado">Register Fiado Sale</button>
+    </div>
 
-            <a href="#" data-i18n="navClients">
-                Clients
-            </a>
+    <!-- TAB 1: INVENTORY CONTENT -->
+    <section id="inventory-tab" class="tab-content active">
+      <div class="section-title-wrapper">
+        <h1 class="section-title">Your inventory, always exact</h1>
+        <p class="section-subtitle">Showing core products and add option. Use search bar to look up items.</p>
+      </div>
 
-            <a href="#" data-i18n="navReports">
-                Reports
-            </a>
-
-            <a href="#" data-i18n="navContact">
-                Contact
-            </a>
-
-        </nav>
-
-    </header>
-
-
-    <!-- =========================
-         SEARCH / OPTIONS BAR
-    ========================== -->
-
-    <section class="utility-bar">
-
-        <div class="utility-brand">
-
-            <img
-                src="assets/fiao-logo.svg"
-                alt="FIA'O">
-
-        </div>
-
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                ⌕
-            </span>
-
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="Search products, pantry, drinks..."
-                data-i18n-placeholder="searchPlaceholder">
-
-        </div>
-
-
-        <div class="utility-actions">
-
-            <!-- LANGUAGE -->
-
-            <button
-                class="language-btn"
-                id="languageBtn"
-                type="button">
-
-                <span>
-                    ◉
-                </span>
-
-                <strong id="languageLabel">
-                    ES
-                </strong>
-
-            </button>
-
-
-            <!-- DARK MODE -->
-
-            <button
-                class="theme-btn"
-                id="themeBtn"
-                type="button">
-
-                <span id="themeIcon">
-                    ☾
-                </span>
-
-            </button>
-
-        </div>
-
+      <div class="products-grid" id="products-grid">
+        <!-- Products will be generated dynamically by JS -->
+      </div>
     </section>
 
+    <!-- TAB 2: REGISTER FIADO SALE CONTENT -->
+    <section id="fiado-tab" class="tab-content">
+      <div class="section-title-wrapper">
+        <h1 class="section-title">Register Fiado Sale</h1>
+        <p class="section-subtitle">Assign credit sales to a client in less than a minute.</p>
+      </div>
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
+      <div class="fiado-form-card">
+        <form id="fiado-sale-form">
+          <div class="form-row-client">
+            <div class="form-group flex-1">
+              <label class="form-label">Client</label>
+              <select id="fiado-client" class="custom-select" required>
+                <option value="Ramón Batista">Ramón Batista</option>
+                <option value="Carlos Gómez">Carlos Gómez</option>
+                <option value="Ana Martínez">Ana Martínez</option>
+                <option value="Yolanda Pérez">Yolanda Pérez</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-dark-add" id="add-client-btn">+ New Client</button>
+          </div>
 
-    <main class="page">
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label class="form-label">Product</label>
+              <select id="fiado-product" class="custom-select" required>
+                <!-- Generated by JS -->
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label">Quantity</label>
+              <input type="number" id="fiado-quantity" class="custom-input" value="1" min="1" required>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="date" id="fiado-date" class="custom-input" required>
+          </div>
 
-        <!-- TABS -->
+          <div class="total-box">
+            <span>TOTAL OF THE FIADO</span>
+            <span class="total-amount" id="fiado-total-display">B/. 0.00</span>
+          </div>
 
-        <div class="section-tabs">
+          <button type="submit" class="btn btn-red-submit">Register fiado</button>
+        </form>
+      </div>
 
-            <button
-                class="tab active"
-                id="inventoryTab"
-                data-i18n="inventory">
+      <!-- Recent Fiado Sales Section -->
+      <div class="recent-sales-card">
+        <h3 class="recent-sales-title">Recent fiado sales</h3>
+        <div id="recent-sales-list" class="recent-sales-list">
+          <div class="recent-sale-item">
+            <span><strong>Yolanda Pérez</strong> - White Bread (x2)</span>
+            <div class="sale-actions">
+              <span class="sale-price">B/. 3.00</span>
+              <button class="delete-sale-btn" title="Delete Sale"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                Inventory
+  </main>
 
-            </button>
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-card">
+      <button class="close-modal-btn" id="close-modal">&times;</button>
+      <h2 class="modal-title" id="modal-title-text">Add New Product</h2>
 
-
-            <button
-                class="tab"
-                id="saleTab"
-                data-i18n="registerSale">
-
-                Register Fiado Sale
-
-            </button>
-
+      <form id="product-form">
+        <div class="upload-photo-box" id="upload-box">
+          <i class="fa-solid fa-camera camera-icon"></i>
+          <span id="upload-label">Click to upload photo from files</span>
+          <input type="file" id="product-file-input" accept="image/*" class="file-input-hidden">
         </div>
 
-
-        <!-- =========================
-             INVENTORY
-        ========================== -->
-
-        <section id="inventoryView">
-
-            <div class="intro">
-
-                <h1 data-i18n="inventoryTitle">
-                    Your inventory, always exact
-                </h1>
-
-                <p data-i18n="inventorySubtitle">
-                    Showing core products and add option.
-                    Use search bar to look up items.
-                </p>
-
-            </div>
-
-
-            <!-- PRODUCTS WILL APPEAR HERE -->
-
-            <div
-                class="product-grid"
-                id="productGrid">
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             REGISTER FIADO SALE
-        ========================== -->
-
-        <section
-            id="saleView"
-            class="sale-view hidden">
-
-            <div class="sale-card">
-
-                <h2 data-i18n="saleTitle">
-                    Register Fiado Sale
-                </h2>
-
-                <p data-i18n="saleText">
-                    Select a client and add the products sold on credit.
-                </p>
-
-
-                <div class="sale-form">
-
-                    <label>
-
-                        <span data-i18n="client">
-                            Client
-                        </span>
-
-                        <input
-                            id="clientName"
-                            type="text"
-                            placeholder="Client name">
-
-                    </label>
-
-
-                    <label>
-
-                        <span data-i18n="saleProduct">
-                            Product
-                        </span>
-
-                        <select id="saleProduct"></select>
-
-                    </label>
-
-
-                    <label>
-
-                        <span data-i18n="quantity">
-                            Quantity
-                        </span>
-
-                        <input
-                            id="saleQuantity"
-                            type="number"
-                            min="1"
-                            value="1">
-
-                    </label>
-
-
-                    <button
-                        id="registerSaleBtn"
-                        class="primary-btn"
-                        type="button"
-                        data-i18n="register">
-
-                        Register
-
-                    </button>
-
-                </div>
-
-
-                <p
-                    id="saleMessage"
-                    class="sale-message">
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         ADD / EDIT PRODUCT MODAL
-    ========================== -->
-
-    <div
-        class="modal-backdrop hidden"
-        id="productModal">
-
-        <div class="modal">
-
-            <button
-                class="close-btn"
-                id="closeModal"
-                type="button">
-
-                ×
-
-            </button>
-
-
-            <h2
-                id="modalTitle"
-                data-i18n="addProduct">
-
-                Add New Product
-
-            </h2>
-
-
-            <form id="productForm">
-
-                <input
-                    type="hidden"
-                    id="editingId">
-
-
-                <label>
-
-                    <span data-i18n="productName">
-                        Product name
-                    </span>
-
-                    <input
-                        id="productName"
-                        required
-                        type="text"
-                        placeholder="Example: Flour">
-
-                </label>
-
-
-                <label>
-
-                    <span data-i18n="category">
-                        Category
-                    </span>
-
-                    <select id="productCategory">
-
-                        <option>
-                            Pantry
-                        </option>
-
-                        <option>
-                            Bakery
-                        </option>
-
-                        <option>
-                            Beverages
-                        </option>
-
-                        <option>
-                            Dairy
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
-
-                    </select>
-
-                </label>
-
-
-                <label>
-
-                    <span data-i18n="price">
-                        Price (B/.)
-                    </span>
-
-                    <input
-                        id="productPrice"
-                        required
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        placeholder="1.50">
-
-                </label>
-
-
-                <label>
-
-                    <span data-i18n="stock">
-                        Stock
-                    </span>
-
-                    <input
-                        id="productStock"
-                        required
-                        type="number"
-                        min="0"
-                        step="1"
-                        placeholder="10">
-
-                </label>
-
-
-                <label>
-
-                    <span data-i18n="unit">
-                        Unit
-                    </span>
-
-                    <input
-                        id="productUnit"
-                        required
-                        type="text"
-                        value="Unit"
-                        placeholder="Unit / Bottle / Pack / lb">
-
-                </label>
-
-
-                <div class="modal-actions">
-
-                    <button
-                        class="cancel-btn"
-                        id="cancelModal"
-                        type="button"
-                        data-i18n="cancel">
-
-                        Cancel
-
-                    </button>
-
-
-                    <button
-                        class="primary-btn"
-                        type="submit"
-                        data-i18n="save">
-
-                        Save product
-
-                    </button>
-
-                </div>
-
-            </form>
-
+        <div class="form-group">
+          <label class="form-label"><i class="fa-solid fa-link"></i> Or paste image link (URL)</label>
+          <input type="text" id="product-image-url" class="custom-input" placeholder="https://example.com/image.jpg">
         </div>
 
+        <div class="form-group">
+          <label class="form-label">📝 Product Name *</label>
+          <input type="text" id="product-name" class="custom-input" placeholder="e.g. Rice (1 lb)" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="form-label">🏷️ Category *</label>
+            <select id="product-category" class="custom-select" required>
+              <option value="Pantry">Pantry</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Dairy">Dairy</option>
+              <option value="Snacks">Snacks</option>
+            </select>
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">📦 Unit *</label>
+            <select id="product-unit" class="custom-select" required>
+              <option value="Pound (lb)">Pound (lb)</option>
+              <option value="Unit">Unit</option>
+              <option value="Bottle">Bottle</option>
+              <option value="Pack">Pack</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="form-label">💵 Selling Price (B/.) *</label>
+            <input type="number" step="0.01" id="product-price" class="custom-input" placeholder="0.95" required>
+          </div>
+          <div class="form-group flex-1">
+            <label class="form-label">🧮 Stock (Quantity) *</label>
+            <input type="number" id="product-stock" class="custom-input" placeholder="50" required>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn btn-cancel" id="cancel-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-save">Save Product</button>
+        </div>
+      </form>
     </div>
+  </div>
 
-
-    <!-- TOAST -->
-
-    <div
-        class="toast"
-        id="toast">
-    </div>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script src="Products.js"></script>
-
+  <!-- Script File para Products -->
+  <script src="./asset/js/Products.js"></script>
 </body>
 </html>

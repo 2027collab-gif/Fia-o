@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIA'O - Client Management</title>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- CSS Stylesheet para Clients -->
+  <link rel="stylesheet" href="./asset/css/Clients.css">
+</head>
+<body>
+
+  <!-- FIA'O NAVIGATION BAR -->
+  <header>
+    <nav class="navbar">
+
+      <!-- Logo -->
+      <div class="navbar-brand">
+        <a href="Index.html">
+          <img
+            src="./asset/img/Logo.png"
+            alt="FIA'O Logo"
+            class="navbar-logo"
+          >
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="navbar-menu">
+        <li><a href="Index.html" class="nav-link">Home</a></li>
+        <li><a href="Credit.html" class="nav-link">Credit</a></li>
+        <li><a href="Products.html" class="nav-link">Products</a></li>
+        <li><a href="Clients.html" class="nav-link active">Clients</a></li>
+        <li><a href="Reports.html" class="nav-link">Reports</a></li>
+        <li><a href="Conect.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- Action Icons -->
+      <div class="navbar-actions">
+
+        <button
+          class="icon-btn"
+          id="notifications-btn"
+          title="Notifications"
+          type="button"
+        >
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-badge">2</span>
+        </button>
+
+        <button
+          class="icon-btn"
+          id="theme-toggle"
+          title="Toggle Dark/Light Mode"
+          type="button"
+        >
+          <i class="fa-regular fa-moon"></i>
+        </button>
+
+        <a
+          href="User.html"
+          class="user-avatar-btn"
+          title="User Profile"
+        >
+          <i class="fa-regular fa-circle-user"></i>
+        </a>
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="clients-main-container">
+
+    <div class="clients-layout-grid">
+
+      <!-- LEFT COLUMN: TITLE & MAN IMAGE -->
+      <div class="left-hero-column">
+        
+        <div class="header-title-box">
+          <div class="title-with-actions">
+            <h1 class="page-title">Client Management</h1>
+            <div class="top-action-icons">
+              <button class="icon-circle-btn" title="Language/Region"><i class="fa-solid fa-globe"></i></button>
+              <button class="icon-circle-btn" id="sub-theme-toggle" title="Settings/Theme"><i class="fa-regular fa-moon"></i></button>
+            </div>
+          </div>
+          
+          <h2 class="page-subtitle">Each client, with a clear account</h2>
+          <p class="page-description">
+            Register your customers in seconds and see at a glance who is up to date, who owes, and who to remind.
+          </p>
+        </div>
+
+        <!-- Person Image -->
+        <div class="hero-image-wrapper">
+          <img src="./asset/img/Señor.png" alt="Merchant assisting client" class="hero-senor-img">
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: SEARCH, FILTERS, TABLE & WHATSAPP CARD -->
+      <div class="right-content-column">
+
+        <!-- SEARCH & FILTER CARD -->
+        <div class="search-filter-card">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="client-search" placeholder="Search client by name or phone...">
+          </div>
+
+          <div class="filter-pills-row">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="On Time">On Time</button>
+            <button class="filter-pill" data-filter="Pending">Pending</button>
+            <button class="filter-pill" data-filter="Overdue">Overdue</button>
+          </div>
+        </div>
+
+        <!-- CLIENTS TABLE CARD -->
+        <div class="clients-table-card">
+          <table class="clients-table">
+            <thead>
+              <tr>
+                <th>CLIENT</th>
+                <th>PURCHASES</th>
+                <th>PENDING DEBT</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="clients-table-body">
+              <!-- Dynamically populated by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- AUTOMATIC REMINDER WHATSAPP CARD -->
+        <div class="whatsapp-reminder-card">
+          <div class="reminder-text-info">
+            <div class="reminder-header">
+              <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+              <h3>Automatic Reminder Sent</h3>
+            </div>
+            <p id="whatsapp-message-preview">
+              WhatsApp to <strong id="reminder-target-name">Ramón Batista</strong>: "Hello Ramón, you have B/. 35.00 pending in Minisúper Doña Chela. See you soon!"
+            </p>
+          </div>
+          <button class="btn-send-whatsapp" id="send-whatsapp-btn">Send</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="./asset/js/Clients.js"></script>
+</body>
+</html>
