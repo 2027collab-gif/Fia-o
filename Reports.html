@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIA'O - Reports</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="asset/css/Reports.css">
+</head>
+<body>
+
+    <header class="header-wrapper">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="Index.html">
+                    <img src="asset/img/Logo.png"
+                         alt="FIA'O Logo"
+                         class="navbar-logo">
+                </a>
+            </div>
+
+            <ul class="navbar-menu">
+                <li><a href="Index.html" class="nav-link">Home</a></li>
+                <li><a href="Credit.html" class="nav-link">Credit</a></li>
+                <li><a href="Products.html" class="nav-link">Products</a></li>
+                <li><a href="Clients.html" class="nav-link">Clients</a></li>
+                <li><a href="Reports.html" class="nav-link active">Reports</a></li>
+                <li><a href="Conect.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <button class="icon-btn"
+                        id="notifications-btn"
+                        title="Notifications"
+                        type="button"
+                        aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </button>
+
+                <!-- Luna en modo claro; sol de contorno en modo oscuro -->
+                <button class="icon-btn"
+                        id="theme-toggle"
+                        title="Switch to Dark Mode"
+                        type="button"
+                        aria-label="Switch to dark mode">
+                    <i id="theme-icon" class="fa-regular fa-moon"></i>
+                </button>
+
+                <a href="User.html"
+                   class="user-avatar-btn"
+                   title="User Profile"
+                   aria-label="User Profile">
+                    <i class="fa-regular fa-circle-user"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="toast-notification" class="toast-notification">
+        Filters applied successfully
+    </div>
+
+    <main class="reports-main-container">
+        <div class="reports-header-row">
+            <div class="reports-title-box">
+                <h1 class="reports-title">
+                    <img src="asset/img/Logo.png"
+                         alt="FIA'O Logo"
+                         class="header-fiao-logo">
+                    Reports
+                </h1>
+                <p class="reports-subtitle">
+                    Financial tracking, credit summaries, and business analytics overview.
+                </p>
+            </div>
+
+            <div class="export-buttons-group">
+                <button class="btn-export pdf-btn" id="export-pdf-btn">
+                    <span class="btn-icon">📄</span>
+                    Export PDF
+                </button>
+                <button class="btn-export excel-btn" id="export-excel-btn">
+                    <span class="btn-icon">📊</span>
+                    Export Excel
+                </button>
+            </div>
+        </div>
+
+        <section class="filters-card-stacked">
+            <div class="filter-block">
+                <label class="filter-block-label" for="start-date">DATE RANGE</label>
+                <div class="date-input-field">
+                    <span class="field-icon">📅</span>
+                    <input type="date" id="start-date" value="2026-07-03">
+                    <span class="field-icon icon-middle">📅</span>
+                    <span class="date-to-text">to</span>
+                    <input type="date" id="end-date" value="2026-07-22">
+                    <span class="field-icon icon-right">📅</span>
+                </div>
+            </div>
+
+            <div class="filter-block">
+                <label class="filter-block-label" for="customer-filter">
+                    CUSTOMER STATUS / NAME
+                </label>
+                <div class="select-input-field">
+                    <span class="field-icon">👥</span>
+                    <select id="customer-filter" class="custom-select-element">
+                        <option value="all">All Customers (All Names)</option>
+                        <option value="active-only">Active Credit Only</option>
+                        <option value="overdue-only">Overdue Only</option>
+                        <optgroup label="Individual Customers">
+                            <option value="Maria Gomez">Maria Gomez</option>
+                            <option value="Carlos Mendoza">Carlos Mendoza</option>
+                            <option value="Ana Ruiz">Ana Ruiz</option>
+                            <option value="Jose Perez">Jose Perez</option>
+                            <option value="Lucia Fernandez">Lucia Fernandez</option>
+                            <option value="Roberto Silva">Roberto Silva</option>
+                            <option value="Carmen Morales">Carmen Morales</option>
+                            <option value="Jorge Ramirez">Jorge Ramirez</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn-apply-filters-full" id="apply-filters-btn">
+                <span>🔻</span>
+                Apply Filters
+            </button>
+        </section>
+
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">TOTAL ACTIVE CREDIT</span>
+                    <span class="metric-badge-icon yellow-bg">👛</span>
+                </div>
+                <div class="metric-value">$1,450.00</div>
+                <div class="metric-trend trend-up">↑ +8.4% from last month</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">COLLECTED THIS MONTH</span>
+                    <span class="metric-badge-icon green-bg">✓</span>
+                </div>
+                <div class="metric-value">$3,120.50</div>
+                <div class="metric-trend trend-up">↑ +12.1% efficiency</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">PENDING BALANCES</span>
+                    <span class="metric-badge-icon red-bg">⚠️</span>
+                </div>
+                <div class="metric-value">$340.00</div>
+                <div class="metric-trend trend-down">↓ -3 accounts overdue</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">TOTAL CUSTOMERS</span>
+                    <span class="metric-badge-icon blue-bg">👤</span>
+                </div>
+                <div class="metric-value">48</div>
+                <div class="metric-trend trend-up">👤 +5 new this month</div>
+            </div>
+        </section>
+
+        <section class="charts-row-grid">
+            <div class="chart-card main-chart-card">
+                <h3 class="chart-card-title">Credit Activity &amp; Payments Flow</h3>
+                <div class="chart-legend">
+                    <span class="legend-item"><span class="legend-dot dot-yellow"></span>Credit Issued</span>
+                    <span class="legend-item"><span class="legend-dot dot-green"></span>Payments Received</span>
+                    <span class="legend-item"><span class="legend-dot dot-red"></span>Overdue</span>
+                </div>
+
+                <div class="bar-chart-visual">
+                    <div class="chart-column-group">
+                        <div class="bars-wrapper">
+                            <div class="bar bar-yellow" style="height:50%;"></div>
+                            <div class="bar bar-green" style="height:70%;"></div>
+                            <div class="bar bar-red" style="height:20%;"></div>
+                        </div>
+                        <span class="column-label">Week 1</span>
+                    </div>
+                    <div class="chart-column-group">
+                        <div class="bars-wrapper">
+                            <div class="bar bar-yellow" style="height:70%;"></div>
+                            <div class="bar bar-green" style="height:85%;"></div>
+                            <div class="bar bar-red" style="height:30%;"></div>
+                        </div>
+                        <span class="column-label">Week 2</span>
+                    </div>
+                    <div class="chart-column-group">
+                        <div class="bars-wrapper">
+                            <div class="bar bar-yellow" style="height:45%;"></div>
+                            <div class="bar bar-green" style="height:60%;"></div>
+                            <div class="bar bar-red" style="height:25%;"></div>
+                        </div>
+                        <span class="column-label">Week 3</span>
+                    </div>
+                    <div class="chart-column-group">
+                        <div class="bars-wrapper">
+                            <div class="bar bar-yellow" style="height:80%;"></div>
+                            <div class="bar bar-green" style="height:95%;"></div>
+                            <div class="bar bar-red" style="height:35%;"></div>
+                        </div>
+                        <span class="column-label">Week 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-card status-breakdown-card">
+                <h3 class="chart-card-title">Payment Status Breakdown</h3>
+                <div class="status-progress-list">
+                    <div class="status-progress-item">
+                        <div class="progress-info-row">
+                            <span>On Time (75%)</span><strong>$2,340</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill fill-green" style="width:75%;"></div>
+                        </div>
+                    </div>
+                    <div class="status-progress-item">
+                        <div class="progress-info-row">
+                            <span>Pending (17%)</span><strong>$540</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill fill-yellow" style="width:17%;"></div>
+                        </div>
+                    </div>
+                    <div class="status-progress-item">
+                        <div class="progress-info-row">
+                            <span>Overdue (8%)</span><strong>$240</strong>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill fill-red" style="width:8%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="transactions-table-card">
+            <h3 class="table-card-title">Recent Credit Transactions</h3>
+            <div class="table-scroll-wrapper">
+                <table class="reports-table" id="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+            <div class="pagination-container">
+                <button class="page-btn active" data-page="1">1</button>
+                <button class="page-btn" data-page="2">2</button>
+                <button class="page-btn" data-page="3">3</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="asset/js/Reports.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 /* =========================================
    TIPOGRAFÍAS Y VARIABLES GLOBALES
 ========================================= */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
 
 @font-face {
   font-family: 'Gotham';
@@ -22,6 +22,7 @@
   --color-brown: #482D1F;
 
   --font-title: 'Gotham', sans-serif;
+  --font-navbar: 'Plus Jakarta Sans', 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-subtitle: 'DM Sans', Arial, sans-serif;
   --font-body: 'Garet', sans-serif;
 
@@ -56,12 +57,12 @@ body {
 }
 
 /* =========================================
-   NAVIGATION BAR (Idéntica al Home/Index)
+   NAVIGATION BAR (Tipografía calcada a la imagen)
 ========================================= */
 
 header {
   width: 100%;
-  padding: 20px 0 15px; /* Espaciado interno inferior */
+  padding: 20px 0 15px;
   background-color: var(--header-bg);
   transition: background-color 0.25s ease;
 }
@@ -70,18 +71,14 @@ header {
   width: 90%;
   max-width: 1600px;
   min-height: 72px;
-
   margin: 0 auto;
   padding: 9px 36px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-
   background-color: var(--color-red);
   border-radius: 45px;
-
   box-shadow: 0 5px 14px rgba(72, 45, 31, 0.15);
 }
 
@@ -102,16 +99,14 @@ header {
   object-fit: contain;
 }
 
-/* NAVIGATION LINKS */
+/* NAVIGATION LINKS CON LA FUENTE DE LA IMAGEN */
 
 .navbar-menu {
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex: 1;
-  gap: 8px;
-
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -125,33 +120,33 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 11px 20px;
-
+  padding: 10px 24px;
   color: #FFFFFF;
-  font-family: var(--font-subtitle);
-  font-size: 17px;
-  font-weight: 700;
-
+  font-family: var(--font-navbar);
+  font-size: 18px;
+  font-weight: 800; /* Negrita idéntica a la imagen */
+  letter-spacing: -0.2px;
   text-decoration: none;
   white-space: nowrap;
   border-radius: 30px;
-
   transition: background-color 0.2s ease,
               color 0.2s ease,
               transform 0.2s ease;
 }
 
 .navbar-menu .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.13);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
+/* El enlace activo tiene la cápsula amarilla idéntica a la imagen */
 .navbar-menu .nav-link.active {
   background-color: var(--color-yellow);
-  color: var(--color-brown);
+  color: #332314;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* RIGHT-SIDE ICONS */
+/* ICONOS DE LA DERECHA */
 
 .navbar-actions {
   display: flex;
@@ -163,19 +158,15 @@ header {
 
 .icon-btn {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
   background: transparent;
   border: none;
-
   color: #FFFFFF;
   font-size: 25px;
   cursor: pointer;
-
   transition: transform 0.2s ease;
 }
 
@@ -188,17 +179,13 @@ header {
   position: absolute;
   top: -9px;
   right: -10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 20px;
   height: 20px;
-
   background-color: var(--color-yellow);
   color: var(--color-brown);
-
   border-radius: 50%;
   font-family: var(--font-subtitle);
   font-size: 11px;
@@ -209,11 +196,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #FFFFFF;
   font-size: 29px;
   text-decoration: none;
-
   transition: transform 0.2s ease;
 }
 
@@ -224,7 +209,7 @@ header {
 .credit-main-container {
   max-width: 1600px;
   width: 90%;
-  margin: 55px auto 40px; /* Margen superior amplio para alejar el fondo rojo de la barra de navegación */
+  margin: 40px auto 40px;
   flex: 1;
 }
 
@@ -648,7 +633,7 @@ body.dark-mode .navbar-menu .nav-link.active {
   }
 
   .navbar-menu .nav-link {
-    padding: 10px 12px;
+    padding: 10px 14px;
     font-size: 15px;
   }
 

@@ -1,7 +1,7 @@
 /* =========================================
    TIPOGRAFÍAS Y VARIABLES GLOBALES
 ========================================= */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
 
 @font-face {
   font-family: 'Gotham';
@@ -22,10 +22,11 @@
   --color-brown: #482D1F;
 
   --font-title: 'Gotham', sans-serif;
+  --font-navbar: 'Plus Jakarta Sans', 'DM Sans', system-ui, -apple-system, sans-serif;
   --font-subtitle: 'DM Sans', Arial, sans-serif;
   --font-body: 'Garet', sans-serif;
 
-  --header-bg: #FEF3C7; /* Fondo crema detrás de la barra de navegación */
+  --header-bg: #FFFFFF;
   --page-background: #FFFFFF;
   --text-main: #482D1F;
   --text-muted: #6B7280;
@@ -84,33 +85,29 @@ body {
 }
 
 /* =========================================
-   NAVIGATION BAR (Palabras más pegadas)
+   NAVIGATION BAR (IDÉNTICA A CREDIT EN TAMAÑO Y ELEMENTOS)
 ========================================= */
 
 header {
   width: 100%;
-  padding: 20px 0;
+  padding: 20px 0 15px;
   background-color: var(--header-bg);
   transition: background-color 0.25s ease;
 }
 
 .navbar {
-  width: 94%;
-  max-width: 1650px;
-  min-height: 68px;
-
+  width: 90%;
+  max-width: 1600px;
+  min-height: 72px;
   margin: 0 auto;
-  padding: 8px 36px;
-
+  padding: 9px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-
   background-color: var(--color-red);
-  border-radius: 50px;
-
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 45px;
+  box-shadow: 0 5px 14px rgba(72, 45, 31, 0.15);
 }
 
 .navbar-brand {
@@ -124,22 +121,20 @@ header {
 
 .navbar-logo {
   display: block;
-  height: 42px;
+  height: 48px;
   width: auto;
-  max-width: 180px;
+  max-width: 190px;
   object-fit: contain;
 }
 
-/* NAVIGATION LINKS */
+/* ENLACES Y TIPOGRAFÍA DE CREDIT */
 
 .navbar-menu {
   display: flex;
   align-items: center;
   justify-content: center;
-
   flex: 1;
-  gap: 4px; /* Espacio reducido entre los elementos */
-
+  gap: 12px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -153,18 +148,15 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 8px 14px; /* Padding reducido para acercar más las palabras */
-
+  padding: 10px 24px;
   color: #FFFFFF;
-  font-family: var(--font-subtitle);
-  font-size: 16px;
-  font-weight: 700;
-
+  font-family: var(--font-navbar);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
   text-decoration: none;
   white-space: nowrap;
   border-radius: 30px;
-
   transition: background-color 0.2s ease,
               color 0.2s ease,
               transform 0.2s ease;
@@ -174,12 +166,15 @@ header {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+/* El botón activo pasa a ser CLIENTS manteniendo el estilo amarillo pill */
 .navbar-menu .nav-link.active {
   background-color: var(--color-yellow);
-  color: var(--color-brown);
+  color: #332314;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* RIGHT-SIDE ICONS */
+/* ICONOS DERECHOS IDÉNTICOS */
 
 .navbar-actions {
   display: flex;
@@ -191,19 +186,15 @@ header {
 
 .icon-btn {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
   background: transparent;
   border: none;
-
   color: #FFFFFF;
-  font-size: 23px;
+  font-size: 25px;
   cursor: pointer;
-
   transition: transform 0.2s ease;
 }
 
@@ -214,19 +205,15 @@ header {
 
 .notification-badge {
   position: absolute;
-  top: -8px;
-  right: -9px;
-
+  top: -9px;
+  right: -10px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 19px;
-  height: 19px;
-
+  width: 20px;
+  height: 20px;
   background-color: var(--color-yellow);
   color: var(--color-brown);
-
   border-radius: 50%;
   font-family: var(--font-subtitle);
   font-size: 11px;
@@ -237,11 +224,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #FFFFFF;
-  font-size: 27px;
+  font-size: 29px;
   text-decoration: none;
-
   transition: transform 0.2s ease;
 }
 
@@ -342,6 +327,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .search-input-box {
@@ -367,6 +353,11 @@ header {
   font-family: var(--font-body);
   font-size: 14px;
   outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-input-box input:focus {
+  border-color: var(--color-red);
 }
 
 .filter-pills-row {
@@ -404,6 +395,7 @@ body.dark-mode .filter-pill.active {
   border-radius: 20px;
   padding: 10px 24px;
   overflow-x: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .clients-table {
@@ -519,6 +511,7 @@ body.dark-mode .filter-pill.active {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .reminder-header {
@@ -585,19 +578,35 @@ body.dark-mode .navbar-menu .nav-link.active {
   color: #482D1F;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .clients-layout-grid {
-    grid-template-columns: 1fr;
+/* RESPONSIVE IDÉNTICO */
+@media (max-width: 1200px) {
+  .navbar {
+    width: 94%;
+    gap: 14px;
+    padding: 9px 22px;
   }
-  .hero-senor-img {
-    max-width: 280px;
+
+  .navbar-logo {
+    height: 43px;
+  }
+
+  .navbar-menu {
+    gap: 2px;
+  }
+
+  .navbar-menu .nav-link {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+
+  .navbar-actions {
+    gap: 15px;
   }
 }
 
 @media (max-width: 900px) {
   header {
-    padding: 15px 0;
+    padding: 15px 0 0;
   }
 
   .navbar {
@@ -614,11 +623,15 @@ body.dark-mode .navbar-menu .nav-link.active {
     flex-basis: 100%;
     flex-wrap: wrap;
   }
+
+  .clients-layout-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
   header {
-    padding: 12px 0;
+    padding-top: 12px;
   }
 
   .navbar {
@@ -632,11 +645,11 @@ body.dark-mode .navbar-menu .nav-link.active {
   }
 
   .navbar-menu {
-    gap: 2px;
+    gap: 4px;
   }
 
   .navbar-menu .nav-link {
-    padding: 6px 8px;
+    padding: 8px 10px;
     font-size: 12px;
   }
 
