@@ -8,7 +8,7 @@ let products = [
     price: 0.85,
     stock: 25,
     unitAbbr: "lb",
-    image: "./asset/img/Azúcar.png"
+    image: "./asset/img/Azucar.png"
   },
   {
     id: 2,
