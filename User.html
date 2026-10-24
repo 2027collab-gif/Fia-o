@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - FIA'O</title>
+   
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+   
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="asset/css/User.css">
+</head>
+<body>
+ 
+    <!-- Botón Back en la parte superior izquierda -->
+    <div class="top-nav-container">
+        <button id="backBtn" class="back-btn">
+            <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back</span>
+        </button>
+    </div>
+ 
+    <!-- Header Rojo con información del usuario -->
+    <header class="profile-header">
+        <div class="user-info-section">
+            <div class="avatar-circle">
+                <span>J</span>
+            </div>
+            <div class="user-details">
+                <span class="role-badge">BUSINESS OWNER</span>
+                <h1 class="user-name">John Rodriguez</h1>
+                <p class="user-location">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    Minisuper El Buen Precio
+                </p>
+                <p class="user-location">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Panama City, Panama
+                </p>
+            </div>
+        </div>
+ 
+        <!-- Tarjetas de métricas -->
+        <div class="stats-cards-container">
+            <div class="stat-card">
+                <div class="stat-icon yellow-bg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                </div>
+                <div>
+                    <span class="stat-label">Total to collect</span>
+                    <h3 class="stat-value">$1240.50</h3>
+                </div>
+            </div>
+ 
+            <div class="stat-card">
+                <div class="stat-icon yellow-bg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div>
+                    <span class="stat-label">Active clients</span>
+                    <h3 class="stat-value">4</h3>
+                </div>
+            </div>
+ 
+            <div class="stat-card">
+                <div class="stat-icon yellow-bg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                </div>
+                <div>
+                    <span class="stat-label">Collected this month</span>
+                    <h3 class="stat-value">$864.00</h3>
+                </div>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- Sección de Información Personal y Plan -->
+    <main class="main-content">
+        <div class="content-grid">
+            <section class="info-card">
+                <div class="card-header">
+                    <h2>Personal information</h2>
+                    <button class="edit-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                        Edit
+                    </button>
+                </div>
+ 
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full name</label>
+                        <input type="text" value="John Rodriguez" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Business name</label>
+                        <input type="text" value="Minisuper El Buen Precio" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" value="john@elbuenprecio.pa" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" value="+507 6123-4567" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" value="Panama City" readonly>
+                    </div>
+                </div>
+            </section>
+ 
+            <aside class="sidebar-card">
+                <div class="plan-card">
+                    <span class="plan-subtitle">CURRENT PLAN</span>
+                    <h2 class="plan-title">FIA'O Business</h2>
+                    <p class="plan-desc">Unlimited clients, reports and reminders.</p>
+                   
+                    <div class="plan-progress-info">
+                        <span>Credit portfolio</span>
+                        <span>$1240.50 / $2000</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 62%;"></div>
+                    </div>
+                </div>
+ 
+                <button class="logout-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    Log out
+                </button>
+            </aside>
+        </div>
+    </main>
+ 
+    <!-- Sección Inferior: My Business -->
+    <section class="my-business-section">
+        <div class="business-container">
+            <h1 class="business-title">My <span>business</span></h1>
+ 
+            <!-- Pestañas de Navegación -->
+            <div class="business-tabs">
+                <button class="tab-btn active" data-tab="clients">Clients</button>
+                <button class="tab-btn" data-tab="activity">Activity</button>
+                <button class="tab-btn" data-tab="settings">Settings</button>
+            </div>
+ 
+            <!-- Contenido de las pestañas -->
+            <div class="tab-content-container">
+                <!-- Pestaña 1: Clients -->
+                <div id="clients-tab" class="tab-panel active">
+                    <div class="business-list">
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="avatar-small">A</div>
+                                <div>
+                                    <h4 class="item-title">Ana Torres</h4>
+                                    <p class="item-subtitle">Last payment: 12 days ago</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount">$120.00</span>
+                                <span class="amount-status">Owes</span>
+                            </div>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="avatar-small">P</div>
+                                <div>
+                                    <h4 class="item-title">Pedro Ruiz</h4>
+                                    <p class="item-subtitle">Last payment: 5 days ago</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount">$32.50</span>
+                                <span class="amount-status">Owes</span>
+                            </div>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="avatar-small">P</div>
+                                <div>
+                                    <h4 class="item-title">Pedro Ruiz</h4>
+                                    <p class="item-subtitle">Last payment: 1 week ago</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount">$32.50</span>
+                                <span class="amount-status">Owes</span>
+                            </div>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="avatar-small">J</div>
+                                <div>
+                                    <h4 class="item-title">Jonn Perez</h4>
+                                    <p class="item-subtitle">Last payment: 3 days ago</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount">$45.00</span>
+                                <span class="amount-status">Owes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- Pestaña 2: Activity -->
+                <div id="activity-tab" class="tab-panel">
+                    <div class="business-list">
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle yellow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">Reminder sent</h4>
+                                    <p class="item-subtitle">Pedro Ruiz notified by WhatsApp</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount-dark">$32.50</span>
+                                <span class="amount-time">2 days ago</span>
+                            </div>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle yellow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 13 12 18 7 13"></polyline><line x1="12" y1="6" x2="12" y2="18"></line></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">Payment received</h4>
+                                    <p class="item-subtitle">Ana Torres paid a partial amount</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount-dark">$40.00</span>
+                                <span class="amount-time">Today, 10:24</span>
+                            </div>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle yellow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 11 12 6 17 11"></polyline><line x1="12" y1="18" x2="12" y2="6"></line></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">New credit added</h4>
+                                    <p class="item-subtitle">Jonn Perez - groceries</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount-dark">$45.00</span>
+                                <span class="amount-time">Yesterday</span>
+                            </div>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle yellow">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">New client registered</h4>
+                                    <p class="item-subtitle">Pedro Ruiz added to your ledger</p>
+                                </div>
+                            </div>
+                            <div class="item-right">
+                                <span class="amount-time">Last week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- Pestaña 3: Settings -->
+                <div id="settings-tab" class="tab-panel">
+                    <div class="business-list">
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">Automatic reminders</h4>
+                                    <p class="item-subtitle">Notify clients with pending balances.</p>
+                                </div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">Weekly report</h4>
+                                    <p class="item-subtitle">Receive a summary every Monday.</p>
+                                </div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">Payment alerts</h4>
+                                    <p class="item-subtitle">Get notified when a client pays.</p>
+                                </div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+ 
+                        <div class="business-item">
+                            <div class="item-left">
+                                <div class="icon-circle blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="item-title">Two-step verification</h4>
+                                    <p class="item-subtitle">Extra security for your account.</p>
+                                </div>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
+    </section>
+ 
+    <script src="asset/js/User.js"></script>
+</body>
+</html>
